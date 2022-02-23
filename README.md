@@ -41,7 +41,7 @@ As a solution, we aim to provide a tool to provide statistical data representing
 ## Links
 <!-- - [Project Page](https://cepdnaclk.github.io/e17-3yp) -->
 - [Project Repository](https://github.com/cepdnaclk/e17-co328-Analysis-Tool-for-Industrial-Images)
-- [Project Page](https://cepdnaclk.github.io/e17-Analysis-Tool -for-Industrial-Images)
+- [Project Page](https://cepdnaclk.github.io/e17-Analysis-Tool-for-Industrial-Images)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 
