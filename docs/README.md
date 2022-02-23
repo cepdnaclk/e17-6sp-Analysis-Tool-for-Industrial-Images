@@ -3,25 +3,23 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and title
-repository-name: eYY-XXX-project-template
-title:
+repository-name: e17-co328-Analysis-Tool-for-Industrial-Images
+title: Analysis Tool for Industrial Images
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Project Title
+# Analysis Tool for Industrial Images
 
 ---
 
-This is a sample image, to show how to add images to your page. To learn more options, please refer [this](https://projects.ce.pdn.ac.lk/docs/faq/how-to-add-an-image/)
 
-![Sample Image](./images/sample.png)
 
 
 ## Team
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
+-  E/17/154, KARUNANAYAKE A.I, [e17154@eng.pdn.ac.lk](mailto:e17154@eng.pdn.ac.lk)
+-  E/17/072, DISSANAYAKE D.M.D.R, [e17072@eng.pdn.ac.lk](mailto:e17072@eng.pdn.ac.lk)
+-  E/17/380, WEERASOORIYA S.S, [e17380@eng.pdn.ac.lk](mailto:e17380@eng.pdn.ac.lk)
 
 ## Table of Contents
 1. [Introduction](#introduction)
