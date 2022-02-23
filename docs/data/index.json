@@ -1,25 +1,25 @@
 {
     "team": [
         {
-            "name": "Team Member Name 1",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx",
+            "name": "Dissanayake D.M.D.R",
+            "email": "e17072@eng.pdn.ac.lk",
+            "eNumber": "E/17/072",
             "github_profile":"#",
             "linkedin_profile":"#",
             "website": "#"
         },
         {
-            "name": "Team Member Name 2",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx",
-            "github_profile":"#",
+            "name": "Karunanayake A.I.",
+            "email": "e17154@eng.pdn.ac.lk",
+            "eNumber": "E/17/154",
+            "github_profile":"Akilax0",
             "linkedin_profile":"#",
             "website": "#"
         },
         {
-            "name": "Team Member Name 3",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx",
+            "name": "Weerasooriya S.S. ",
+            "email": "e17380@eng.pdn.ac.lk",
+            "eNumber": "E/17/380",
             "github_profile":"#",
             "linkedin_profile":"#",
             "website": "#"
@@ -27,17 +27,17 @@
     ],
     "supervisors": [
         {
-            "name": "Dr. Supervisor 1",
-            "email": "email@eng.pdn.ac.lk",
-            "linkedin_profile":"#",
-            "researchgate_profile":"#",
+            "name": "Dr. Isuru Nawinne",
+            "email": "isurunawinne@eng.pdn.ac.lk",
+            "linkedin_profile":"https://www.linkedin.com/in/isuru-nawinne-73302833/",
+            "researchgate_profile":"https://www.researchgate.net/profile/Isuru-Nawinne",
             "website": "#"
         },
         {
-            "name": "Supervisor 2",
-            "email": "email@eng.pdn.ac.lk",
-            "linkedin_profile":"#",
-            "researchgate_profile":"#",
+            "name": "Prof. Roshan G. Ragel",
+            "email": "roshanr@eng.pdn.ac.lk",
+            "linkedin_profile":"https://www.linkedin.com/in/roshanragel/",
+            "researchgate_profile":"https://www.researchgate.net/profile/Roshan-Ragel",
             "website": "#"
         }
     ],
