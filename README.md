@@ -29,11 +29,6 @@ The above issue is mainly handled by checking the molds manually on each iterati
 
 As a solution, we aim to provide a tool to provide statistical data representing to be used to show the effectiveness of the algorithm.Here we would change parameters such as threshold values for identifying particle sizes. For this we will be using the images captured from the device and manually labelled image sets. As a second part of the implementation, a dashboard to centrally view all the statistical data pertaining to different machines will be created. So that a better management of the facility can be maintained. With the proposed solution we will be able to improve the performance of the current implementation and as a result, improve the overall benefits. We will be able to have better confirmation of the errors / defects with higher assurance. We wil be able to minimize the cost of labour as the frequency of mold checks/ cleaning gets minimized and increase the overall output of the machines. The minimal maintenance cost wil be significantly lower than the high price to be paid for damaged molds. With the added improvement s to the device, the whole operation will ultimately be able to work on its maximum rated speed without any interference
 
-
-
-For more information about the project please checkout our projects page at 
-[Project Page](https://cepdnaclk.github.io/e17-Analysis-Tool -for-Industrial-Images)
-
 ---
 
 ## Team
@@ -46,6 +41,7 @@ For more information about the project please checkout our projects page at
 ## Links
 <!-- - [Project Page](https://cepdnaclk.github.io/e17-3yp) -->
 - [Project Repository](https://github.com/cepdnaclk/e17-co328-Analysis-Tool-for-Industrial-Images)
+- [Project Page](https://cepdnaclk.github.io/e17-Analysis-Tool -for-Industrial-Images)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 
