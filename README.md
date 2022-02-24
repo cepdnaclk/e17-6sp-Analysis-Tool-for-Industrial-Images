@@ -11,15 +11,19 @@ Title: Analysis Tool for Industrial Images
 #  Analysis Tool for Industrial Images
 
 ## Table of Contents
-* [Problem Overview](#Problem-Overview)
-* [Existing System](#Existing-System)
-* [Proposed System](#Proposed-System)
-* [Team](#Team)
-* [Links](#Links)
+- [Analysis Tool for Industrial Images](#analysis-tool-for-industrial-images)
+  - [Table of Contents](#table-of-contents)
+  - [Problem Overview](#problem-overview)
+  - [Existing System](#existing-system)
+  - [Proposed System](#proposed-system)
+  - [Team](#team)
+  - [Links](#links)
 
 ## Problem Overview
 
 The injection molding manufacturing process is used for producing parts by injecting molten material into a mold.In our specific use case, we focus on plastic injection molding.One of the common problems in this process is when plastic residue gets stuck or left behind in the mold.Thus leading to damages to the mold , defects in products and ultimately resulting in unwanted business costs.
+
+<img src = "docs/images/injection_moulding_process.gif">
 
 ## Existing System
 
