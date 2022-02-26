@@ -20,6 +20,6 @@ The user can get an idea about the mold and the materials that is being used in 
 
 ## Machinewise Details Page
 
-User can get an overview of the performance of the respective machine.
+User can get an overview of the performance of the algorithm respective machine.
 
 ![](images/machine01.png)
