@@ -13,9 +13,6 @@ title: Analysis Tool for Industrial Images
 
 ---
 
-
-
-
 ## Team
 -  E/17/154, KARUNANAYAKE A.I, [e17154@eng.pdn.ac.lk](mailto:e17154@eng.pdn.ac.lk)
 -  E/17/072, DISSANAYAKE D.M.D.R, [e17072@eng.pdn.ac.lk](mailto:e17072@eng.pdn.ac.lk)
