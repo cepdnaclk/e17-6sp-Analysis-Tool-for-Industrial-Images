@@ -6,8 +6,6 @@ repository-name: e17-co328-Analysis-Tool-for-Industrial-Images
 Title: Analysis Tool for Industrial Images
 ---
 
-[comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
-
 #  Analysis Tool for Industrial Images
 
 ## Table of Contents
