@@ -50,6 +50,7 @@ export const Machine = (props) => {
         >
           <Typography
             variant="body2"
+            color={status === 'Online' ? 'green' : 'red'}
             sx={{
               mr: 1
             }}

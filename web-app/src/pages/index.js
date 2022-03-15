@@ -7,17 +7,17 @@ const machines = [
   {
     machineId : '001',
     monaNumber : '52078592',
-    status : 'online',
+    status : 'Online',
   },
   {
     machineId : '002',
     monaNumber : '82525425',
-    status : 'online',
+    status : 'Online',
   },
   {
     machineId : '003',
     monaNumber : '35636356',
-    status : 'offline',
+    status : 'Offline',
   }
 ];
 
