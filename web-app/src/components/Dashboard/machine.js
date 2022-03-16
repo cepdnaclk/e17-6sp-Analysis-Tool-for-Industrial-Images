@@ -2,64 +2,71 @@ import { Avatar, Box, Card, CardContent, Grid, Typography } from '@mui/material'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
 
-export const Machine = (props) => (
-  <Card {...props}>
-    <CardContent>
-      <Grid
-        container
-        spacing={3}
-        sx={{ justifyContent: 'space-between' }}
-      >
-        <Grid item>
-          <Typography
-            color="textSecondary"
-            gutterBottom
-            variant="overline"
-          >
-            Machine
-          </Typography>
-          <Typography
-            color="textPrimary"
-            variant="h4"
-          >
-            1,6k
-          </Typography>
+import PropTypes from 'prop-types';
+
+
+export const Machine = (props) => {
+  const { machineId, monaNumber, status, ...others } = props;
+  return (
+    <Card {...others}>
+      <CardContent>
+        <Grid
+          container
+          spacing={3}
+          sx={{ justifyContent: 'space-between' }}
+        >
+          <Grid item>
+            <Typography
+              color="textSecondary"
+              gutterBottom
+              variant="overline"
+            >
+              Machine {machineId}
+            </Typography>
+            <Typography
+              color="textPrimary"
+              variant="h6"
+            >
+              Mona Number = {monaNumber}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Avatar
+              sx={{
+                backgroundColor: 'success.main',
+                height: 56,
+                width: 56
+              }}
+            >
+              <PrecisionManufacturingIcon />
+            </Avatar>
+          </Grid>
         </Grid>
-        <Grid item>
-          <Avatar
-            sx={{
-              backgroundColor: 'success.main',
-              height: 56,
-              width: 56
-            }}
-          >
-            <PrecisionManufacturingIcon />
-          </Avatar>
-        </Grid>
-      </Grid>
-      <Box
-        sx={{
-          alignItems: 'center',
-          display: 'flex',
-          pt: 2
-        }}
-      >
-        <ArrowUpwardIcon color="success" />
-        <Typography
-          variant="body2"
+        <Box
           sx={{
-            mr: 1
+            alignItems: 'center',
+            display: 'flex',
+            pt: 2
           }}
         >
-          16%
-        </Typography>
-        <Typography
-          color="textSecondary"
-          variant="caption"
-        >
-          Since last month
-        </Typography>
-      </Box>
-    </CardContent>
-  </Card>
-);
+          <Typography
+            variant="body2"
+            color={status === 'Online' ? 'green' : 'red'}
+            sx={{
+              mr: 1
+            }}
+          >
+            { status }
+          </Typography>
+        </Box>
+      </CardContent>
+    </Card>
+  )
+};
+
+Machine.propTypes = {
+  machineId: PropTypes.string.isRequired,
+  monaNumber: PropTypes.string.isRequired,
+  status: PropTypes.string
+};
+
