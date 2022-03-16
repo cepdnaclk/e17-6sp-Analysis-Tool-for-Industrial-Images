@@ -1,12 +1,22 @@
 import csv
 import os
+import datetime
 
-def init():
+
+def init(thresh):
     # setting parameters
     print("Setting parameters...")
 
+    print("Threshold  Value: {}".format(thresh))
+    #algorithm/plastic_detector_roi.py
+
+    command = "python3 plastic_detector_roi.py images/Dataset/ " + str(thresh)
+
+    os.system(command)
+
+
 def read(path):
-    print("Reading output file")
+    print("Reading output files")
 
     count = 0
 
@@ -15,36 +25,46 @@ def read(path):
     for i in entries:
         count +=1
 
-    # with open('cities.csv', newline='') as csvfile:
-    #     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-    
-    #     #skip heading
-    #     next(spamreader)
-
-    #     for row in spamreader:
-    #         tot+=1
-    #         # print(' '.join(row))
-    #         if len(row[-1]) > 0 and float(row[-1]) > 125:    
-    #             # print(type(float(row[-1])))
-    #             pos+=1
-
-
     return count
 
 def out(tot,pos):
-    print(tot)
-    print(pos)
-    print("Total mold shots in data set: {} \n success rate: {} \n".format(tot,float(pos/tot)*100))
+    print("Total mold shots in data set: {} \n clean mold shots: {} \n".format(tot,pos))
     
 if __name__ == "__main__":
 
-    tot = 0
-    pos=0
+    threshold = 500
+    
+    results = {}
 
-    path = 'debug_img/positives/'
-    positive = read(path)
-    print(positive)
-    path = 'debug_img/negatives/'
-    negative = read(path)
-    print(negative)
-    out(positive + negative, positive)
+    begin_time = datetime.datetime.now()
+
+    while threshold <= 1500:
+
+        init(threshold)
+
+        tot = 0
+        pos=0
+
+        path = 'debug_img/positives/'
+        positive = read(path)
+        print(positive)
+        path = 'debug_img/negatives/'
+        negative = read(path)
+        print(negative)
+        out(positive + negative, negative)
+
+
+        results[threshold] = [positive,negative]
+        threshold += 500
+
+    print("==============Analaysis Tool Output==================")
+    print("| Threshold   |     Positives    |      Negatives    |")
+    print("-----------------------------------------------------")
+    for i in results:
+        print("|     {}      |         {}       |         {}        |".format(i,results[i][0],results[i][1]))
+
+
+    print("\n\n\nRuntime: ")
+    print(datetime.datetime.now() - begin_time)
+
+
