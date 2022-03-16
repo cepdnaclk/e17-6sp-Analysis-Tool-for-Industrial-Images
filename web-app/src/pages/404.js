@@ -43,7 +43,7 @@ const NotFound = () => (
             Whichever it is, try using the navigation
           </Typography>
           <Box sx={{ textAlign: 'center' }}>
-            <img
+            {/* <img
               alt="Under development"
               src="/static/images/undraw_page_not_found_su7k.svg"
               style={{
@@ -52,7 +52,7 @@ const NotFound = () => (
                 maxWidth: '100%',
                 width: 560
               }}
-            />
+            /> */}
           </Box>
           <NextLink
             href="/"

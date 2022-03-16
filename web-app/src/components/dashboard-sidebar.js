@@ -19,7 +19,7 @@ const Navitems = [
     title: 'Dashboard'
   },
   {
-    href: '/',
+    href: '/productdata',
     icon: (<ShoppingBagIcon fontSize="small" />),
     title: 'Production Data'
   }
@@ -27,12 +27,12 @@ const Navitems = [
 
 const items = [
   {
-    href: '/',
+    href: '/profiles',
     icon: (<UserIcon fontSize="small" />),
     title: 'Profile'
   },
   {
-    href: '/',
+    href: '/logout',
     icon: (<LogOutIcon fontSize="small" />),
     title: 'Logout'
   }
@@ -70,7 +70,7 @@ export const DashboardSidebar = (props) => {
         }}
       >
         <div>
-          <Box sx={{ px: 3 }}>
+          {/* <Box sx={{ px: 3 }}>
             <NextLink
               href="/"
               passHref
@@ -84,8 +84,8 @@ export const DashboardSidebar = (props) => {
                 />
               </a>
             </NextLink>
-          </Box>
-          <Box sx={{ px: 1 }}>
+          </Box> */}
+          <Box sx={{ px: 2, py:3 }}>
             <Box
               sx={{
                 alignItems: 'center',
