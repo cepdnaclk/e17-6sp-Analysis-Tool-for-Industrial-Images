@@ -3,6 +3,7 @@ import { Box, Container, Grid } from '@mui/material';
 import { DashboardLayout } from '../components/dashboard-layout';
 import { Machine } from '../components/Dashboard/machine';
 
+
 const machines = [
   {
     machineId : '001',
@@ -40,6 +41,7 @@ const Dashboard = () => (
           container
           spacing={3}
         >
+
           {machines.map((machine) => (
             <Grid item lg={4} sm={6} xl={3} xs={12}>
               <Machine 
@@ -50,6 +52,7 @@ const Dashboard = () => (
               />
             </Grid>
           ))}
+
         </Grid>
       </Container>
     </Box>

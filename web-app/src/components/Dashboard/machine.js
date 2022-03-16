@@ -1,6 +1,7 @@
 import { Avatar, Box, Card, CardContent, Grid, Typography } from '@mui/material';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
+
 import PropTypes from 'prop-types';
 
 
@@ -68,3 +69,4 @@ Machine.propTypes = {
   monaNumber: PropTypes.string.isRequired,
   status: PropTypes.string
 };
+
