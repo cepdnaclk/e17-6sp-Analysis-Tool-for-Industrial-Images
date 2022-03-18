@@ -50,7 +50,16 @@ As a solution, we aim to provide a tool to provide statistical data representing
 
 ## Analysis Tool
 
+The Analysis Tool is built to get statistical data of the implemented algorithm. The tool automatically sets threshold values for given datasets and outputs statistical data. The current implementation is written with python using modules for file reading and system access.
+
+- preRun-> set parameters for the algorithm (threshold value , select data set)
+- Inputs -> data(images) stating true or false
+- Process -> calculate how well selected parameters perform
+
 ## Dashboard
+Used to visualize the data provided by the tool for multiple machines.
+<img src = "../UI-UX/Wireframes/images/dashboard.png">
+
 
 ## Machine Learning
 
