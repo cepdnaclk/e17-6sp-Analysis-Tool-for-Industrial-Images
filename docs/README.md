@@ -25,7 +25,8 @@ title: Analysis Tool for Industrial Images
 4. [Analysis Tool](#analysis-tool)
 5. [Dashboard](#dashboard)
 6. [Machine Learning](#machine-learning)
-7. [Links](#links)
+7. [Backend](#backend)
+8. [Links](#links)
 
 ---
 
@@ -58,10 +59,21 @@ The Analysis Tool is built to get statistical data of the implemented algorithm.
 
 ## Dashboard
 Used to visualize the data provided by the tool for multiple machines.
+
+
 <img src = "../UI-UX/Wireframes/images/dashboard.png">
+
+<img src = "../UI-UX/Wireframes/images/machine01.png">
+
+<img src = "../UI-UX/Wireframes/images/admin.png">
 
 
 ## Machine Learning
+
+## Backend
+
+Backend is build using nodejs for the servers , MySQL for the database and ExpressJS for the REST API. 
+
 
 ## Links
 
