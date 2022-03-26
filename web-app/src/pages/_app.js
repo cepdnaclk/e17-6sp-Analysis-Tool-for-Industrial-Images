@@ -5,26 +5,22 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { createEmotionCache } from '../utils/create-emotion-cache';
-import { theme } from '../theme';
+import { theme } from '../../theme';
 
-const clientSideEmotionCache = createEmotionCache();
+
+const clientSideEmotionalCache = createEmotionCache();
 
 const App = (props) => {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  const { Component, emotionalCache = clientSideEmotionalCache, pageProps } = props;
 
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
-    <CacheProvider value={emotionCache}>
+    <CacheProvider value={emotionalCache}>
       <Head>
-        <title>
-          Material Kit Pro
-        </title>
-        <meta
-          name="viewport"
-          content="initial-scale=1, width=device-width"
-        />
+        <title>Fancy Name</title>
       </Head>
+      <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
@@ -36,3 +32,4 @@ const App = (props) => {
 };
 
 export default App;
+

@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { Box, Button, Divider, Drawer, Menu, Typography, useMediaQuery } from '@mui/material';
