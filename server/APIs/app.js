@@ -16,11 +16,24 @@ const mc = mysql.createConnection({
 });
 
 // connect to database and check whether the connection is successful or not
-mc.connect((err) => {
-    if (err) {
-        console.error('error connecting: ' + err.stack);
-        return;
-    }
-    console.log('connected as id ' + mc.threadId);
-}
-);
+// mc.connect((err) => {
+//     if (err) {
+//         console.error('error connecting: ' + err.stack);
+//         return;
+//     }
+//     console.log('connected as id ' + mc.threadId);
+// }
+// );
+
+// start the server and connect to the database in it
+app.listen(3000, async () => {
+    console.log('Server started on port 3000');
+    // connect to database and check whether the connection is successful or not
+    mc.connect((err) => {
+        if (err) {
+            console.error('error connecting: ' + err.stack);
+            return;
+        }
+        console.log('Database up and running! (Connected as id ' + mc.threadId + ')');
+    });
+});
