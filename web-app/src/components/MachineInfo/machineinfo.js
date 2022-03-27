@@ -15,59 +15,72 @@ export const MachineInfoPage = (props) => {
         prod_endDate,
         ...others } = props;
   return (
-    <Card {...others}>
-      <CardContent>
-        <Grid
-          container
-          spacing={3}
-          sx={{ justifyContent: 'space-between' }}
-        >
-          <Grid item>
+    <Grid 
+        container
+        spacing={3}
+        sx={{ justifyContent: 'space-between' }}
+    >
+        <Grid item>
             <Typography
-              color="textSecondary"
-              gutterBottom
-              variant="overline"
+                color="textPrimary"
+                variant="h6"
+                style={{"font-size":"1.5rem", "font-weight":"bold", padding:"1rem"}}
             >
-              Machine {machineId}
+                Machine {machineId}
             </Typography>
-            <Typography
-              color="textPrimary"
-              variant="h6"
-            >
-              Mona Number = {monaNumber}
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Avatar
-              sx={{
-                backgroundColor: 'success.main',
-                height: 56,
-                width: 56
-              }}
-            >
-              <PrecisionManufacturingIcon />
-            </Avatar>
-          </Grid>
+            <Card>
+                <CardContent>
+                    <Grid>
+                        <Grid item>
+                            <Typography
+                                color="textPrimary"
+                                gutterBottom
+                                variant="h6"
+                            >
+                                Mona Number = {monaNumber}
+                            </Typography>
+                            <Typography
+                                color="textSecondary"
+                                variant="body2"
+                            >
+                                Mold Shots = {moldShots}
+                            </Typography>
+                            <Typography
+                                color="textSecondary"
+                                variant="body2"
+                            >
+                                Failed Shots = {failedShots}
+                            </Typography>
+                            <Typography
+                                color="textSecondary"
+                                variant="body2"
+                            >
+                                Production Rate = {prodRate}
+                            </Typography>
+                            <Typography
+                                color={status === 'Online' ? 'green' : 'red'}
+                                variant="body2"
+                            >
+                                { status }
+                            </Typography>
+                            <Typography
+                                color="textSecondary"
+                                variant="body2"
+                            >
+                                Production Start Date = {prod_startDate}
+                            </Typography>
+                            <Typography
+                                color="textSecondary"
+                                variant="body2"
+                            >
+                                Production End Date = {prod_endDate}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                </CardContent>
+            </Card>
         </Grid>
-        <Box
-          sx={{
-            alignItems: 'center',
-            display: 'flex',
-            pt: 2
-          }}
-        >
-          <Typography
-            variant="body2"
-            color={status === 'Online' ? 'green' : 'red'}
-            sx={{
-              mr: 1
-            }}
-          >
-            { status }
-          </Typography>
-        </Box>
-      </CardContent>
-    </Card>
+    </Grid>
   )
 };
 

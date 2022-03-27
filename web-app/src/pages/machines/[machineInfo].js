@@ -43,7 +43,7 @@ const MachineInfo = () => {
         machineId={currMachine.machineId}
         monaNumber={currMachine.monaNumber}
         status={currMachine.status}
-        moldDShots={currMachine.moldDShots}
+        moldShots={currMachine.moldDShots}
         failedShots={currMachine.failedShots}
         prodRate={currMachine.prodRate}
         prod_startDate={currMachine.prod_startDate}
