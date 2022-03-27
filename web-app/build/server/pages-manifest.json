@@ -5,7 +5,6 @@
   "/": "pages/index.js",
   "/login": "pages/login.js",
   "/machines/[machineInfo]": "pages/machines/[machineInfo].js",
-  "/machines/machineData": "pages/machines/machineData.js",
   "/register": "pages/register.js",
   "/_error": "pages/_error.js"
 }
