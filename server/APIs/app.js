@@ -15,15 +15,11 @@ const mc = mysql.createConnection({
     database: 'analysis_tool'
 });
 
-// connect to database and check whether the connection is successful or not
-// mc.connect((err) => {
-//     if (err) {
-//         console.error('error connecting: ' + err.stack);
-//         return;
-//     }
-//     console.log('connected as id ' + mc.threadId);
-// }
-// );
+// import routes
+authRoute = require('./routes/auth.js');
+
+// route middleware
+app.use('/api/users',)
 
 // start the server and connect to the database in it
 app.listen(3000, async () => {
