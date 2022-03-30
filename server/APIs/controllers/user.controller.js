@@ -19,8 +19,11 @@ exports.register = async (req, res) => {
         password: hashedPassword
     });
 
+    // print empID
+    console.log(empID);
+
     // create a new user
-    const response = User.create(user);
+    const response = await User.create(user);
 
     // if user exists
     if (response === 0) {
