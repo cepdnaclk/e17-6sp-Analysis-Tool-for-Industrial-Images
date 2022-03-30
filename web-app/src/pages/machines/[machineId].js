@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { MachineInfoPage } from '../../components/MachineInfo/machineInfo';
+import { MachineInfoPage } from '../../components/MachineInfo/machineinfo';
 
 const machineData =  [
     {
