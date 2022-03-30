@@ -31,7 +31,7 @@ const items = [
     title: 'Profile'
   },
   {
-    href: '/logout',
+    href: '/login',
     icon: (<LogOutIcon fontSize="small" />),
     title: 'Logout'
   }

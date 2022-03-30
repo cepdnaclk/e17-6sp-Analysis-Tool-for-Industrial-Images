@@ -3,6 +3,8 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.html",
+  "/login": "pages/login.html",
   "/machines/[machineId]": "pages/machines/[machineId].js",
+  "/register": "pages/register.html",
   "/_error": "pages/_error.js"
 }
