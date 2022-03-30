@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/cepdnaclk/e17-co328-Analysis-Tool-for-Industrial-Images#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.2",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
