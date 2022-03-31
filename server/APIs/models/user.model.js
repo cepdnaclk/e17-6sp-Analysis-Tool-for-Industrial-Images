@@ -38,6 +38,20 @@ User.create = async (newUser) => {
     }
 }
 
+// login a user
+User.login = async (user) => {
+    // check whether empID exists in the passwords table
+    const row = await sql.query(`SELECT * FROM passwords WHERE empID = '${user.empID}'`);
+
+    if (row.length > 0) {
+        // return the row in the passwords table joined with the employees table
+        const result = await sql.query(`SELECT * FROM passwords JOIN employees ON passwords.empID = employees.empID WHERE passwords.empID = '${user.empID}'`);
+        return result[0];
+    } else {
+        throw new Error("User does not exist");
+    }
+}
+
 
 // export the user model
 module.exports = User;
