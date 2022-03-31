@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 
 export const Machine = (props) => {
-  const { machineId, monaNumber, status, ...others } = props;
+  const { machineId, monaNumber, status, moldShots, failedShots, prodRate, prod_startDate, prod_endDate, ...others } = props;
   return (
     <Card {...others}>
       <CardContent>

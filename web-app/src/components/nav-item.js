@@ -1,14 +1,14 @@
-import NextLink from 'next/link';
-import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 import { Box, Button, ListItem } from '@mui/material';
 
 export const NavItem = (props) => {
   const { href, icon, title, ...others } = props;
-  const router = useRouter();
-  const active = href ? (router.pathname === href) : false;
+  const location = useLocation();
+  const active = true;
 
   return (
+    // console.log(props.location),
     <ListItem
       disableGutters
       sx={{
@@ -19,8 +19,8 @@ export const NavItem = (props) => {
       }}
       {...others}
     >
-      <NextLink
-        href={href}
+      <Link
+        to={href}
         passHref
       >
         <Button
@@ -49,13 +49,7 @@ export const NavItem = (props) => {
             {title}
           </Box>
         </Button>
-      </NextLink>
+      </Link>
     </ListItem>
   );
-};
-
-NavItem.propTypes = {
-  href: PropTypes.string,
-  icon: PropTypes.node,
-  title: PropTypes.string
 };

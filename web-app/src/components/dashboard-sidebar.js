@@ -1,14 +1,12 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
-import { Box, Button, Divider, Drawer, Menu, Typography, useMediaQuery } from '@mui/material';
+// import { useEffect } from 'react';
+// import PropTypes from 'prop-types';
+import { Box,  Divider, Drawer, Typography, useMediaQuery } from '@mui/material';
 
 import { ChartBar as ChartBarIcon } from '../icons/chart-bar';
 import { ShoppingBag as ShoppingBagIcon } from '../icons/shopping-bag';
 import { User as UserIcon } from '../icons/user';
 import { LogOut as LogOutIcon } from '../icons/log-out';
 
-import { Logo } from './logo';
 import { NavItem } from './nav-item';
 
 const Navitems = [
@@ -39,25 +37,10 @@ const items = [
 
 export const DashboardSidebar = (props) => {
   const { open, onClose } = props;
-  const router = useRouter();
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'), {
     defaultMatches: true,
     noSsr: false
   });
-
-  useEffect(
-    () => {
-      if (!router.isReady) {
-        return;
-      }
-
-      if (open) {
-        onClose?.();
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [router.asPath]
-  );
 
   const content = (
     <>
@@ -69,21 +52,6 @@ export const DashboardSidebar = (props) => {
         }}
       >
         <div>
-          {/* <Box sx={{ px: 3 }}>
-            <NextLink
-              href="/"
-              passHref
-            >
-              <a>
-                <Logo
-                  sx={{
-                    height: 42,
-                    width: 42
-                  }}
-                />
-              </a>
-            </NextLink>
-          </Box> */}
           <Box sx={{ px: 2, py:3 }}>
             <Box
               sx={{
@@ -186,7 +154,7 @@ export const DashboardSidebar = (props) => {
   );
 };
 
-DashboardSidebar.propTypes = {
-  onClose: PropTypes.func,
-  open: PropTypes.bool
-};
+// DashboardSidebar.propTypes = {
+//   onClose: PropTypes.func,
+//   open: PropTypes.bool
+// };

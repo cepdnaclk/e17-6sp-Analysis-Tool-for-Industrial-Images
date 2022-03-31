@@ -1,4 +1,4 @@
-import { Avatar, Box, Card, CardContent, Grid, Typography } from '@mui/material';
+import { Card, CardContent, Grid, Typography } from '@mui/material';
 
 import PropTypes from 'prop-types';
 
