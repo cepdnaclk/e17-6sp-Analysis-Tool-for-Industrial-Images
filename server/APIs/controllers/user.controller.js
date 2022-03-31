@@ -1,6 +1,7 @@
 // import packages
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
 
 // import user model
 const User = require('../models/user.model');
@@ -48,9 +49,15 @@ exports.login = async (req, res) => {
             res.status(400).send('Invalid password');
         } else {
             // create a token
-            const token = jwt.sign({ empID: user.empID, admin: user.admin }, process.env.JWT_KEY, { expiresIn: '1h' });
+            const token = jwt.sign({ empID: user.empID, admin: user.admin }, dotenv.config().parsed.JWT_KEY , { expiresIn: '1h' });
             // set header and send the token and set the status code to 200
-            res.header('auth-token', token).send({"token": token});
+            res.header('auth-token', token).send({
+                "token": token,
+                "empID": user.empID,
+                "firstName": user.firstName,
+                "lastName": user.lastName,
+                "admin": user.admin
+            });
         }
     }
     else {
