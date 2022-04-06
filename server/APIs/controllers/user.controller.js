@@ -1,23 +1,10 @@
 // import packages
 const bcrypt = require('bcrypt');
-const mysql = require('mysql');
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
 
-// import config
-const config = require('../config/config');
-
-// create mysql connection
-const mc = mysql.createConnection(config);
-
-// The below code has to updated. A user model is to be created. Will do soon :)
-
-// connect to database
-mc.connect((err) => {
-    if (err) {
-        console.error('error connecting: ' + err.stack);
-        return;
-    }
-    console.log('Database up and running! (Connected as id ' + mc.threadId + ')');
-});
+// import user model
+const User = require('../models/user.model');
 
 exports.register = async (req, res) => {
     // hash the password with salt
@@ -26,37 +13,54 @@ exports.register = async (req, res) => {
 
     // check whether empID exists in the employees table
     const empID = req.body.empID;
-    const empStatus = await mc.query(`SELECT * FROM employees WHERE empID = '${empID}'`);
+    // const empStatus = await mc.query(`SELECT * FROM employees WHERE empID = '${empID}'`);
 
-    // if empID exists
-    if (empStatus.length > 0) {
-        // check whether the empID exists in passwords table
-        const pwStatus = await mc.query(`SELECT * FROM passwords WHERE empID = '${empID}'`);
-        // if empID exists in passwords table
-        if (pwStatus.length > 0) {
-            // user already exists
-            res.status(400).json({
-                message: 'User already exists'
-            });
+    // create a user object
+    const user = new User({
+        empID: empID,
+        password: hashedPassword
+    });
+
+    // print empID
+    console.log(empID);
+
+    // create a new user
+    const response = await User.create(user);
+
+    // if user exists
+    if (response === 0) {
+        res.status(400).send('User already exists');
+    }
+    else if (response === 2) {
+        res.status(400).send('Forbidden');
+    }
+    else {
+        res.status(201).send('User added');
+    }
+}
+
+// logn user
+exports.login = async (req, res) => {
+    const user = await User.login(req.body);
+    if (user) {
+        // compare the password
+        const validPassword = await bcrypt.compare(req.body.password, user.password);
+        if (!validPassword) {
+            res.status(400).send('Invalid password');
         } else {
-            // create a new user
-            const user = {
-                empID: req.body.empID,
-                password: hashedPassword
-            };
-            // insert the user into passwords table
-            await mc.query('INSERT INTO passwords SET ?', user);
-            // send a response
-            res.status(200).json({
-                message: 'User created'
+            // create a token
+            const token = jwt.sign({ empID: user.empID, admin: user.admin }, dotenv.config().parsed.JWT_KEY , { expiresIn: '1h' });
+            // set header and send the token and set the status code to 200
+            res.header('auth-token', token).send({
+                "token": token,
+                "empID": user.empID,
+                "firstName": user.firstName,
+                "lastName": user.lastName,
+                "admin": user.admin
             });
         }
-    } else {
-        // empID does not exist
-        res.status(400).json({
-            // forbidden
-            message: 'User does not exist'
-        });
     }
-    
+    else {
+        res.status(400).send('Login failed');
+    }
 }
