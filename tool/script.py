@@ -1,6 +1,7 @@
 import csv
 import os
 import datetime
+import sys
 
 
 def init(thresh):
@@ -29,33 +30,40 @@ def read(path):
 
 def out(tot,pos):
     print("Total mold shots in data set: {} \n clean mold shots: {} \n".format(tot,pos))
-    
-if __name__ == "__main__":
 
-    threshold = 500
-    
+
+if __name__ == "__main__":
+    if(len(sys.argv) ==1):
+        print("Enter arguments as {Dataset} {threshold}")
+
+    #print("Threshold value:"+str(sys.argv[1]))
+    threshold = int(sys.argv[2]) # 500
+    path = str(sys.argv[1])   
     results = {}
 
     begin_time = datetime.datetime.now()
 
-    while threshold <= 1500:
+    while threshold <= 1000:
 
         init(threshold)
 
-        tot = 0
-        pos=0
+    tot = 0
+    pos=0
 
-        path = 'debug_img/positives/'
-        positive = read(path)
-        print(positive)
-        path = 'debug_img/negatives/'
-        negative = read(path)
-        print(negative)
-        out(positive + negative, negative)
+    #positives
+    path = path + 'positives/'
+    positive = read(path)
+    print(positive)
 
+    #negatives
+    path = path + 'negatives/'
+    negative = read(path)
+    print(negative)
 
-        results[threshold] = [positive,negative]
-        threshold += 500
+    out(positive + negative, negative)
+
+    results[threshold] = [positive,negative]
+    threshold += 500
 
     print("==============Analaysis Tool Output==================")
     print("| Threshold   |     Positives    |      Negatives    |")
@@ -65,6 +73,5 @@ if __name__ == "__main__":
 
 
     print("\n\n\nRuntime: ")
+    
     print(datetime.datetime.now() - begin_time)
-
-
