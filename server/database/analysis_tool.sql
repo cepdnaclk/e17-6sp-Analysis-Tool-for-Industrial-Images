@@ -33,6 +33,10 @@ CREATE TABLE analysis_tool.machines(
     prod_end_date DATE NOT NULL
 );
 
+-- add dummy users to the employees table
+INSERT INTO analysis_tool.employees(empID, firstName, lastName, empTitle, admin)
+VALUES ('9876X', 'Jack', 'Reacher', 'Admin', 1),
+         ('1234X', 'James', 'Greer', 'Engineer', 0);
 
 
     

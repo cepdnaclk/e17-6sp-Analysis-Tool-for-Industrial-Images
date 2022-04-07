@@ -27,6 +27,7 @@ jobs:
       - name: npm install and build
         run: |
           npm install
+
           CI=false npm run build --if-present
         working-directory: ./web-app
 
@@ -35,6 +36,7 @@ jobs:
         with:
           name: node-app
           path: ./web-app/build
+
 
   deploy:
     runs-on: ubuntu-latest
