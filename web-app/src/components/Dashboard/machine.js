@@ -1,12 +1,11 @@
 import { Avatar, Box, Card, CardContent, Grid, Typography } from '@mui/material';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
 
 import PropTypes from 'prop-types';
 
 
 export const Machine = (props) => {
-  const { machineId, monaNumber, status, ...others } = props;
+  const { machineId, monaNumber, status, moldShots, failedShots, prodRate, prod_startDate, prod_endDate, ...others } = props;
   return (
     <Card {...others}>
       <CardContent>

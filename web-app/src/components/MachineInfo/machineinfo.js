@@ -1,5 +1,4 @@
-import { Avatar, Box, Card, CardContent, Grid, Typography } from '@mui/material';
-import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
+import { Card, CardContent, Grid, Typography } from '@mui/material';
 
 import PropTypes from 'prop-types';
 

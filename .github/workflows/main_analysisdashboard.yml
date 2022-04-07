@@ -27,15 +27,16 @@ jobs:
       - name: npm install and build
         run: |
           npm install
-          npm run build --if-present
-      
+
+          CI=false npm run build --if-present
         working-directory: ./web-app
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: ./web-app/build/
+          path: ./web-app/build
+
 
   deploy:
     runs-on: ubuntu-latest
