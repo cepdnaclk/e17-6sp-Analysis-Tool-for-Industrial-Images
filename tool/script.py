@@ -4,14 +4,14 @@ import datetime
 import sys
 
 
-def init(thresh):
+def init(thresh,dataset):
     # setting parameters
     print("Setting parameters...")
 
     print("Threshold  Value: {}".format(thresh))
     #algorithm/plastic_detector_roi.py
 
-    command = "python3 plastic_detector_roi.py images/Dataset/ " + str(thresh)
+    command = "python3 plastic_detector_roi.py "+ str(dataset) + " " + str(thresh) # ./images/Dataset/ 800 # 
 
     os.system(command)
 
@@ -38,25 +38,26 @@ if __name__ == "__main__":
 
     #print("Threshold value:"+str(sys.argv[1]))
     threshold = int(sys.argv[2]) # 500
-    path = str(sys.argv[1])   
+    # dataset = images/Dataset/
+    dataset = str(sys.argv[1])   
     results = {}
 
     begin_time = datetime.datetime.now()
 
     while threshold <= 1000:
 
-        init(threshold)
+        init(threshold,dataset)
 
     tot = 0
     pos=0
 
     #positives
-    path = path + 'positives/'
+    path = './debug_img/positives/'
     positive = read(path)
     print(positive)
 
     #negatives
-    path = path + 'negatives/'
+    path = './debug_img/negatives/'
     negative = read(path)
     print(negative)
 
