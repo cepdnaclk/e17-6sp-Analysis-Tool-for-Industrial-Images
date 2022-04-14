@@ -4,6 +4,8 @@
   "description": "APIs for Analysis Tool for Industrial Images App",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "run": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,6 +27,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.8",
     "mysql": "^2.18.1",
+    "nodemon": "^2.0.15",
     "util": "^0.12.4"
   }
 }
