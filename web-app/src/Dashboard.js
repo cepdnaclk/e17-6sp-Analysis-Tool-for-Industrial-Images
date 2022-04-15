@@ -3,45 +3,58 @@ import { Link } from 'react-router-dom';
 import { Box, Container, Grid } from '@mui/material';
 import { DashboardLayout } from './components/dashboard-layout';
 import { Machine } from './components/Dashboard/machine';
-import React, { useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
+import Axios from 'axios';
 
-const machineData = [
-  {
-      machineId : '001',
-      monaNumber : '52078592',
-      status : 'Online',
-      moldShots : '10',
-      failedShots : '0',
-      prodRate : '100%',
-      prod_startDate : '01/01/2020',
-      prod_endDate : '01/01/2022',
-  },
-  {
-      machineId : '002',
-      monaNumber : '82525425',
-      status : 'Online',
-      moldShots : '10',
-      failedShots : '0',
-      prodRate : '100%',
-      prod_startDate : '01/01/2020',
-      prod_endDate : '01/01/2022',
-  },
-  {
-      machineId : '003',
-      monaNumber : '35636356',
-      status : 'Offline',
-      moldShots : '10',
-      failedShots : '0',
-      prodRate : '100%',
-      prod_startDate : '01/01/2020',
-      prod_endDate : '01/01/2022',
-  },
-]
+//const machineData = [
+  //{
+      //machineId : '001',
+      //monaNumber : '52078592',
+      //status : 'Online',
+      //moldShots : '10',
+      //failedShots : '0',
+      //prodRate : '100%',
+      //prod_startDate : '01/01/2020',
+      //prod_endDate : '01/01/2022',
+  //},
+  //{
+      //machineId : '002',
+      //monaNumber : '82525425',
+      //status : 'Online',
+      //moldShots : '10',
+      //failedShots : '0',
+      //prodRate : '100%',
+      //prod_startDate : '01/01/2020',
+      //prod_endDate : '01/01/2022',
+  //},
+  //{
+      //machineId : '003',
+      //monaNumber : '35636356',
+      //status : 'Offline',
+      //moldShots : '10',
+      //failedShots : '0',
+      //prodRate : '100%',
+      //prod_startDate : '01/01/2020',
+      //prod_endDate : '01/01/2022',
+  //},
+//]
+
 
 export default function Dashboard(props){
-  useEffect(() => {
-    document.title = 'Dashboard';
-    }, [props.title]);
+
+	const [machineData, setMachineData] = useState([])
+
+	//useEffect(() => {
+		//document.title = 'Dashboard';
+	//}, [props.title]);
+
+	useEffect(()=>{
+		Axios.get('http://localhost:3001/api/machines').then((response)=>{
+			setMachineData(response.data);
+			console.log(response.data);
+		})
+	})
+
   
     return (
         <DashboardLayout>
@@ -57,21 +70,21 @@ export default function Dashboard(props){
             container
             spacing={3}
             >
-                
+
             <React.Fragment>
-                {machineData.map((machine, index) => (
+                {machineData.map((machine,index) => (
                     
                         <Grid item xs={12} sm={6} md={4} key={index}>
-                            <Link to={`/machines/${machine.machineId}`}>
+                            <Link to={`/machines/${machine.machineID}`}>
                                 <Machine
-                                machineId={machine.machineId}
-                                monaNumber={machine.monaNumber}
-                                status={machine.status}
+                                machineId={machine.machineID}
+                                monaNumber={machine.moldID}
+                                status="online"
                                 moldShots={machine.moldShots}
                                 failedShots={machine.failedShots}
                                 prodRate={machine.prodRate}
-                                prod_startDate={machine.prod_startDate}
-                                prod_endDate={machine.prod_endDate}
+                                prod_startDate={machine.prod_start_date}
+                                prod_endDate={machine.prod_end_date}
                                 />
                             </Link>
                         </Grid>
