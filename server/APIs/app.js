@@ -8,9 +8,9 @@ var app = express();
 app.use(bodyparser.json());
 
 // connection configurations
-const mc = mysql.createConnection({
+const db = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
+    user: dotenv.config().parsed.DB_USER,
     password: dotenv.config().parsed.DB_PASSWORD,
     database: 'analysis_tool'
 });
@@ -21,7 +21,15 @@ authRoute = require('./routes/auth.js');
 // route middleware
 app.use('/api/users', authRoute);
 
+//get all machine details
+app.get("/api/machines" , (req,res)=>{
+	const sqlMachines = "SELECT * FROM machines;"
+	db.query(sqlMachines,(err,result)=>{
+		res.send(result);
+	})
+});
+
 // start the server and connect to the database in it
-app.listen(3000, async () => {
-    console.log('Server started on port 3000');
+app.listen(3001, async () => {
+    console.log('Server started on port 3001');
 });
