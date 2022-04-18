@@ -1,5 +1,8 @@
 import { useLocation } from 'react-router-dom';
 import { MachineInfoPage } from '../../components/MachineInfo/machineinfo';
+import React, { useState,useEffect } from 'react';
+import Axios from 'axios';
+
 
 
 
@@ -19,6 +22,7 @@ const MachineInfo = (props) => {
             prod_startDate= {prod_startDate}
             prod_endDate= {prod_endDate}
         />
+
     )
 }
 

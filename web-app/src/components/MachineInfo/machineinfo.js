@@ -4,14 +4,15 @@ import PropTypes from 'prop-types';
 
 
 export const MachineInfoPage = (props) => {
-  const { machineId,
-        monaNumber,
-        status,
-        moldShots,
-        failedShots,
-        prodRate,
-        prod_startDate,
-        prod_endDate,
+  const { 
+	    machineId,
+	    monaNumber,
+	    status,
+	    moldShots,
+	    failedShots,
+	    prodRate,
+	    prod_startDate,
+	    prod_endDate,
         ...others } = props;
   return (
     <Grid 
@@ -84,13 +85,13 @@ export const MachineInfoPage = (props) => {
 };
 
 MachineInfoPage.propTypes = {
-  machineId: PropTypes.string.isRequired,
-  monaNumber: PropTypes.string.isRequired,
-  status: PropTypes.string,
-  moldShots: PropTypes.number,
-  failedShots: PropTypes.number,
-    prodRate: PropTypes.number,
-    prod_startDate: PropTypes.string,
-    prod_endDate: PropTypes.string
+	machineId: PropTypes.string.isRequired,
+	monaNumber: PropTypes.string.isRequired,
+	status: PropTypes.string,
+	moldShots: PropTypes.number,
+	failedShots: PropTypes.number,
+	prodRate: PropTypes.number,
+	prod_startDate: PropTypes.string,
+	prod_endDate: PropTypes.string
 };
 
