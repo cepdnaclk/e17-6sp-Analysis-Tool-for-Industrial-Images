@@ -78,14 +78,14 @@ export default function Dashboard(props){
 
                             {/* pass parameters using link */}
                             <Link to={{pathname : `/machines/${machine.machineId}`}} state= {{
-                                    machineId: machine.machineId,
-                                    monaNumber: machine.monaNumber,
+                                    machineId: machine.machineID,
+                                    monaNumber: machine.moldID,
                                     status: machine.status,
                                     moldShots: machine.moldShots,
                                     failedShots: machine.failedShots,
                                     prodRate: machine.prodRate,
-                                    prod_startDate: machine.prod_startDate,
-                                    prod_endDate: machine.prod_endDate,
+                                    prod_startDate: machine.prod_start_date,
+                                    prod_endDate: machine.prod_end_date,
                                 }} >
                                 <Machine
                                 machineId={machine.machineID}
