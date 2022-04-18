@@ -75,7 +75,18 @@ export default function Dashboard(props){
                 {machineData.map((machine,index) => (
                     
                         <Grid item xs={12} sm={6} md={4} key={index}>
-                            <Link to={`/machines/${machine.machineID}`}>
+
+                            {/* pass parameters using link */}
+                            <Link to={{pathname : `/machines/${machine.machineId}`}} state= {{
+                                    machineId: machine.machineId,
+                                    monaNumber: machine.monaNumber,
+                                    status: machine.status,
+                                    moldShots: machine.moldShots,
+                                    failedShots: machine.failedShots,
+                                    prodRate: machine.prodRate,
+                                    prod_startDate: machine.prod_startDate,
+                                    prod_endDate: machine.prod_endDate,
+                                }} >
                                 <Machine
                                 machineId={machine.machineID}
                                 monaNumber={machine.moldID}
