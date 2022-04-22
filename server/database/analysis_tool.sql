@@ -38,5 +38,9 @@ INSERT INTO analysis_tool.employees(empID, firstName, lastName, empTitle, admin)
 VALUES ('9876X', 'Jack', 'Reacher', 'Admin', 1),
          ('1234X', 'James', 'Greer', 'Engineer', 0);
 
+INSERT INTO molds(moldID, monaNumber, material, moldMaker)
+VALUES ('ABX', '12345', 'steel', 'Mold maksers');
 
-    
+INSERT INTO machines(machineID, moldID, moldShots, failedShots, prodRate, prod_start_date, prod_end_date)
+VALUES ('001', 'ABX', 23, 3, 23, '2022-01-02', '2022-02-04'),
+        ('002', 'ABX', 23, 3, 23, '2022-01-02', '2022-02-04');
