@@ -1,8 +1,11 @@
 const dotenv = require('dotenv');
 
+dotenv.config();
+
 module.exports = {
-    host: 'localhost',
-    user: 'root',
-    password: dotenv.config().parsed.DB_PASSWORD,
-    database: 'analysis_tool'
+    server: 'analysistooldata',
+    user: 'dataadmin',
+    password: process.env.DB_PASSWORD,
+    database: 'analysis_tool',
+    instaceName: 'analysistooldata.database.windows.net',
 };
