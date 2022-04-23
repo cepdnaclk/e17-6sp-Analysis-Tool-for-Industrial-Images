@@ -26,14 +26,14 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          CI=false npm run build --if-present
+          npm run build --if-present
         working-directory:  ./server/APIs/
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: apis
-          path:  ./server/APIs/build
+          name: node-app
+          path:  ./server/APIs/
 
   deploy:
     runs-on: ubuntu-latest
@@ -46,7 +46,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: apis
+          name: node-app
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
