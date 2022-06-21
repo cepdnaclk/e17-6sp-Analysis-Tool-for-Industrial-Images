@@ -5,9 +5,8 @@ const dotenv = require('dotenv');
 var app = express();
 
 //Configuring express server
-app.use(bodyparser.json());
-
-app.use(bodyparser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // connection configurations
 const db = mysql.createConnection({
@@ -41,26 +40,21 @@ app.route("/api/machines/:machine_id")
 	})
 	})
 	.post((req,res)=>{
-		var jsonStr = JSON.stringify(req.body);
-		console.log(jsonStr);
+		// var jsonStr = JSON.stringify(req.body);
 
-		res.send(test)
-	
-		// //res.json({requestBody: req.body})
-		// console.log(req.body[0].machine_id)
-		// //res.sendStatus(200);
+		var machine_id = req.body.machineID;
+		var failedShots = req.body.failedShots;
 
-		// const machine_id = req.body.machine_id;
-		// const failedShots = req.body.failedShots;
+		console.log(machine_id);
+		console.log(failedShots);      // your JSON
 
-		// const sqlMachines = "UPDATE machines SET failedShots = 9 WHERE machineID = 'D02'; "
-		// db.query(sqlMachines,machine_id,(err,result)=>{
-		// 	if(err)throw err;
-		// 	res.send(result);
-		// 	console.log(result);
-		// 	console.log("update");
-		// })
-		//res.send('POST REQUEST SUCCESS');
+		const sqlMachines = "UPDATE machines SET failedShots = ? WHERE machineID = ?; "
+		db.query(sqlMachines,[failedShots,machine_id],(err,result)=>{
+			if(err)throw err;
+			res.send(result);
+			console.log(result);
+			console.log("update");
+		})
 	});
 
 
