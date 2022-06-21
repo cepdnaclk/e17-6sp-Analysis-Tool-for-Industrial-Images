@@ -2,7 +2,14 @@ const mysql = require('mysql');
 const express = require('express');
 const bodyparser = require('body-parser');
 const dotenv = require('dotenv');
+
+
+
 var app = express();
+
+// Enables CORS
+const cors = require('cors');
+app.use(cors({ origin: true }));
 
 //Configuring express server
 app.use(express.json());
@@ -45,7 +52,7 @@ app.route("/api/init")
 			console.log("update");
 		})
 
-		const insert_machine = "INSERT INTO machines VALUES(?,?,?,?,?,?,?); "
+		const insert_machine = "INSERT INTO machines VALUES(?,?,?,?,?,?,?);"
 		db.query(insert_machine,[machineID,moldID,moldShots,failedShots,prodRate,prod_start_date,prod_end_date],(err,result)=>{
 			if(err)throw err;
 			res.send(result);

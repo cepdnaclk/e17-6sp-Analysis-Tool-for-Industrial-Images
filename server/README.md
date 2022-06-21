@@ -29,8 +29,6 @@ accordingly.
 - npm install
 - npm start (starts running on 'localhost:3000')
 
-
-
 ## API Endpoints
 
 ### Machine
@@ -39,11 +37,10 @@ API endpoints accessed by machines.
 
 #### POST
 
-- for initial 
+- for initial
     /api/init
-- for updates 
+- for updates
     /api/machines/{machine_id}
- 
 
 ### Web app
 
@@ -56,9 +53,7 @@ API endpoints accessed by webapp.
 - /api/molds
 - /apt/molds/{mold_id}
 
-
 ## Database
-
 
 ### <b>machines</b>
 
