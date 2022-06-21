@@ -37,11 +37,19 @@ accordingly.
 
 API endpoints accessed by machines.
 
-- 
+#### POST
+
+- for initial 
+    /api/init
+- for updates 
+    /api/machines/{machine_id}
+ 
 
 ### Web app
 
 API endpoints accessed by webapp.
+
+#### GET
 
 - /api/machines
 - /api/machines/{machine_id}
