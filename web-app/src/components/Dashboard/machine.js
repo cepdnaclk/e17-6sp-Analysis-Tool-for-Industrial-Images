@@ -9,7 +9,7 @@ export const Machine = (props) => {
   return (
     <Badge badgeContent={status} color={status === "Online" ? 'secondary' : "error"} >
     <Card variant="outlined"
-      sx={{  borderWidth:3, maxWidth: 260, margin: 0, padding: 0 }}  {...others}>
+      sx={{  borderWidth:3, maxWidth: 300, margin: 0, padding: 0 }}  {...others}>
       <CardContent
           alignItems="center"
         justifyContent="center"
@@ -18,7 +18,7 @@ export const Machine = (props) => {
           container
           alignItems="center"
           justifyContent="left"
-          sx = {{maxWidth:260}}
+          sx = {{maxWidth:300}}
           >
             {/* machine id */}
           <Grid item position="relative">
@@ -83,7 +83,7 @@ export const Machine = (props) => {
                       </TableCell>
                     </TableRow>
                     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                          <TableCell component="th" scope="row">
+                        <TableCell component="th" scope="row">
                           <Box sx={{ marginLeft: 2 }}> 
                               Failed Shots
                           </Box>
