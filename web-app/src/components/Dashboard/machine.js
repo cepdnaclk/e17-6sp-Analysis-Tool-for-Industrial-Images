@@ -74,7 +74,7 @@ export const Machine = (props) => {
                         </TableHead>
                     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 1 } }}>
                       <TableCell component="th" scope="row">
-                        <Box sx={{ marginLeft: 2 }}> 
+                        <Box sx={{ marginLeft: 1 }}> 
                             Mold Shots
                         </Box>
                       </TableCell>
@@ -84,7 +84,7 @@ export const Machine = (props) => {
                     </TableRow>
                     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                         <TableCell component="th" scope="row">
-                          <Box sx={{ marginLeft: 2 }}> 
+                          <Box sx={{ marginLeft: 1 }}> 
                               Failed Shots
                           </Box>
                       </TableCell>
@@ -102,7 +102,7 @@ export const Machine = (props) => {
                         
                     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                           <TableCell component="th" scope="row">
-                          <Box sx={{ marginLeft: 2 }}> 
+                          <Box sx={{ marginLeft: 1 }}> 
                               Rate
                           </Box>
                       </TableCell>
@@ -112,7 +112,7 @@ export const Machine = (props) => {
                     </TableRow>
                     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } ,}}>
                           <TableCell component="th" scope="row">
-                          <Box sx={{ marginLeft: 2 }}> 
+                          <Box sx={{ marginLeft: 1 }}> 
                               Start Date
                           </Box>
                       </TableCell>
@@ -122,7 +122,7 @@ export const Machine = (props) => {
                     </TableRow>
                     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                       <TableCell component="th" scope="row">
-                          <Box sx={{ marginLeft: 2 }}> 
+                          <Box sx={{ marginLeft: 1 }}> 
                               Start Time
                           </Box>
                       </TableCell>
@@ -132,7 +132,7 @@ export const Machine = (props) => {
                     </TableRow>
                     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                       <TableCell component="th" scope="row">
-                          <Box sx={{ marginLeft: 2 }}> 
+                          <Box sx={{ marginLeft: 1 }}> 
                             End Date 
                           </Box>
                       </TableCell>
@@ -142,7 +142,7 @@ export const Machine = (props) => {
                     </TableRow>
                     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                           <TableCell component="th" scope="row">
-                          <Box sx={{ marginLeft: 2 }}>
+                          <Box sx={{ marginLeft: 1 }}>
                               End Time
                           </Box>
                       </TableCell>
