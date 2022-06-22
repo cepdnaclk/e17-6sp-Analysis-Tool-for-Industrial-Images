@@ -6,8 +6,8 @@ import { Machine } from './components/Dashboard/machine';
 import React, { useState,useEffect } from 'react';
 import Axios from 'axios';
 import moment from 'moment';
-
-const xmachineData = [
+import dotenv from 'dotenv';
+const machineData = [
   {
       machineID : '001',
       moldID : '52078592',
@@ -103,14 +103,14 @@ const xmachineData = [
 
 export default function Dashboard(props){
 
-	const [ machineData, setMachineData] = useState([])
+	const [ xmachineData, setMachineData] = useState([])
 
 	useEffect(() => {
 		document.title = 'Dashboard';
 	}, [props.title]);
 
 	useEffect(()=>{
-		Axios.get('http://localhost:3001/api/machines').then((response)=>{
+		Axios.get(dotenv.config().parsed.DB_PASSWORD + '/api/machines').then((response)=>{
 			setMachineData(response.data);
 			console.log(response.data);
 		})
@@ -134,12 +134,21 @@ export default function Dashboard(props){
             >
 
             <React.Fragment>
-                {machineData.map((machine,index) => (
-                    
-                    <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={index} sx={{alignItems:'center',justifyContents:"center",minWidth:290, marginBottom:5}} >
+                            {machineData.map((machine, index) => {
+                                
+                                if (machine.prodRate > 100 || machine.prodRate < 0)
+                                    machine.prodRate = "error"
+                                
+                                if (machine.status != "Online" && machine.status != "Offline")
+                                    machine.status = "error"
+                                    
 
-                            {/* pass parameters using link */}
-                            {/* <Link to={{pathname : `machines/:${machine.machineID}`}} state= {{
+                                return (
+                    
+                                    <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={index} sx={{ alignItems: 'center', justifyContents: "center", minWidth: 290, marginBottom: 5 }} >
+
+                                        {/* pass parameters using link */}
+                                        {/* <Link to={{pathname : `machines/:${machine.machineID}`}} state= {{
                                     machineID: machine.machineID,
                                     monaNumber: machine.moldID,
                                     status: machine.status,
@@ -149,22 +158,22 @@ export default function Dashboard(props){
                                     prod_startDate: machine.prod_start_date,
                                     prod_endDate: machine.prod_end_date,
                                 }} > */}
-                        
-                                <Machine
-                                machineId={machine.machineID}
-                                monaNumber={machine.moldID}
-                                status= {machine.status}
-                                moldShots={machine.moldShots}
-                                failedShots={machine.failedShots}
-                                prodRate={machine.prodRate}
-                                prod_startDate={moment(machine.prod_start_date).format("DD-MM-YYYY")} 
-                                prod_startTime={moment(machine.prod_start_date).format("kk:mm:ss")}                                
-                                prod_endDate={moment(machine.prod_end_date).format("DD-MM-YYYY")} 
-                                prod_endTime={moment(machine.prod_end_date).format("kk:mm:ss")} 
-                                />
-                            {/* </Link> */}
-                        </Grid>
-                ))}
+                                        <Machine
+                                            machineId={machine.machineID}
+                                            monaNumber={machine.moldID}
+                                            status={machine.status}
+                                            moldShots={machine.moldShots}
+                                            failedShots={machine.failedShots}
+                                            prodRate={machine.prodRate}
+                                            prod_startDate={moment(machine.prod_start_date).format("DD-MM-YYYY")}
+                                            prod_startTime={moment(machine.prod_start_date).format("kk:mm:ss")}
+                                            prod_endDate={moment(machine.prod_end_date).format("DD-MM-YYYY")}
+                                            prod_endTime={moment(machine.prod_end_date).format("kk:mm:ss")}
+                                        />
+                                        {/* </Link> */}
+                                    </Grid>
+                                )
+                            })}
             </React.Fragment>
 
             </Grid>
