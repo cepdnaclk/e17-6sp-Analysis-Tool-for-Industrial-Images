@@ -51,7 +51,7 @@ export default function Dashboard(props){
 	useEffect(()=>{
 		Axios.get('http://localhost:3001/api/machines').then((response)=>{
 			setMachineData(response.data);
-			console.log(response.data);
+			// console.log(response.data);
 		})
 	})
 
@@ -77,7 +77,7 @@ export default function Dashboard(props){
                         <Grid item xs={12} sm={6} md={4} key={index}>
 
                             {/* pass parameters using link */}
-                            <Link to={{pathname : `/machines/${machine.machineId}`}} state= {{
+                            <Link to={{pathname : `machines/:${machine.machineID}`}} state= {{
                                     machineId: machine.machineID,
                                     monaNumber: machine.moldID,
                                     status: machine.status,

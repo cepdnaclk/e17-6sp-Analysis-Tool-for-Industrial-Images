@@ -29,9 +29,10 @@ json_dump = json.dumps(data)
 print(json_dump)
 
 # POST request to update machine data 
-x = requests.post(url = URL_MACHINES + '/' + data['machineID'] ,data=json_dump)
+x = requests.post(url = URL_MACHINES + '/' + data['machineID'] ,data=data)
 #r = x.json()
-#print(data)
-#print(x.text)
+print("===========Reply============")
+print(x.text)
+print(x.json())
 
 
