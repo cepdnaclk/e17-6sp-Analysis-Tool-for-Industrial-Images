@@ -38,5 +38,8 @@ INSERT INTO analysis_tool.employees(empID, firstName, lastName, empTitle, admin)
 VALUES ('9876X', 'Jack', 'Reacher', 'Admin', 1),
          ('1234X', 'James', 'Greer', 'Engineer', 0);
 
+-- add dummy mold data to molds
+INSERT INTO molds VALUES('m002','mon121','m_alloy','china');
 
-    
+-- add dummy machine data to machines
+INSERT INTO machines VALUES('D02','m002',50,3,1,'2022-02-09','2022-03-19');
