@@ -38,8 +38,10 @@ Machine.checkMachine = async (machineID) => {
 // }
 
 // create a new machine
-// Machine.create = (newMachine, result) => {
-    
-// }
+Machine.create = async (newMachine) => {
+    // insert the new machine into machines table
+    await sql.query("INSERT INTO machines SET ?", newMachine);
+    return true;
+}
 
 module.exports = Machine;

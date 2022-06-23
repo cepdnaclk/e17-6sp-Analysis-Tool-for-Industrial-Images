@@ -17,4 +17,11 @@ Mold.checkMold = async (moldID) => {
     return false;
 }
 
+// create a new mold
+Mold.create = async (newMold) => {
+    // insert the new mold into molds table
+    await sql.query("INSERT INTO molds SET ?", newMold);
+    return true;
+}
+
 module.exports = Mold;
