@@ -10,6 +10,9 @@ router.get("/", machineController.all);
 // list machine details
 router.get("/:machineID", machineController.show);
 
+// Update machine details
+router.get("/:machineID", machineController.update);
+
 
 // logs in a user
 // router.post("/:machineID", machineController.update);
