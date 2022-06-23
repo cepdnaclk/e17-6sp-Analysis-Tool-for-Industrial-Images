@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 
 export const Machine = (props) => {
-  const { machineId, monaNumber, status, moldShots, failedShots, prodRate, prod_startDate, prod_startTime, prod_endDate,prod_endTime, ...others } = props;
+  const { machineId, monaNumber, status, moldShots, failedShots, prodRate, prod_startDate, prod_startTime, prod_endDate,prod_endTime, material, moldMaker, ...others } = props;
   return (
     <Badge badgeContent={status} color={status === "Online" ? 'secondary' : "error"} >
     <Card variant="outlined"
@@ -83,12 +83,12 @@ export const Machine = (props) => {
                       </TableCell>
                     </TableRow>
                     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                        <TableCell component="th" scope="row">
-                          <Box sx={{ marginLeft: 1 }}> 
+                        <TableCell component="th" scope="row" >
+                          <Box sx={{ marginLeft: 1,color:'red' }} > 
                               Failed Shots
                           </Box>
                       </TableCell>
-                      <TableCell align="left">
+                      <TableCell align="left" sx={{color:'red'}}>
                       {failedShots}
                       </TableCell>
                         </TableRow>
@@ -109,8 +109,28 @@ export const Machine = (props) => {
                       <TableCell align="left">
                         {prodRate}  
                       </TableCell>
+                    </TableRow> 
+                        <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } ,}}>
+                          <TableCell component="th" scope="row">
+                          <Box sx={{ marginLeft: 1 }}> 
+                          Mold Maker
+                          </Box>
+                      </TableCell>
+                      <TableCell align="left">
+                      {moldMaker} 
+                      </TableCell>
+                        </TableRow>
+                        <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } ,}}>
+                          <TableCell component="th" scope="row">
+                          <Box sx={{ marginLeft: 1 }}> 
+                          Material
+                          </Box>
+                      </TableCell>
+                      <TableCell align="left">
+                      {material} 
+                      </TableCell>
                     </TableRow>
-                    <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } ,}}>
+                    {/* <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } ,}}>
                           <TableCell component="th" scope="row">
                           <Box sx={{ marginLeft: 1 }}> 
                               Start Date
@@ -139,8 +159,8 @@ export const Machine = (props) => {
                           <TableCell align="left"> 
                               {prod_endDate}
                       </TableCell>
-                    </TableRow>
-                    <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                    </TableRow> */}
+                    {/* <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                           <TableCell component="th" scope="row">
                           <Box sx={{ marginLeft: 1 }}>
                               End Time
@@ -149,7 +169,7 @@ export const Machine = (props) => {
                       <TableCell align="left">
                       {prod_endTime} 
                       </TableCell>
-                      </TableRow>
+                      </TableRow> */}
                       </TableBody>
                     </Table>
                   </TableContainer>
