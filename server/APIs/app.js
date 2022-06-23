@@ -2,6 +2,16 @@ const mysql = require('mysql');
 const express = require('express');
 const bodyparser = require('body-parser');
 const dotenv = require('dotenv');
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+
+var socketConnection = io.on('connection', function(socket){
+	console.log('Connection started');
+})
+
+
 
 var app = express();
 
@@ -17,9 +27,14 @@ app.use(express.urlencoded({ extended: false }));
 const db = mysql.createConnection({
     host: 'localhost',
     user: dotenv.config().parsed.DB_USER,
-    password: dotenv.config().parsed.DB_PASSWORD,
+    password: 'dahaminimansa5',
     database: 'analysis_tool'
 });
+
+const sqlmachines = "select * from machines;"
+db.query(sqlmachines,(err,result)=>{
+		socketConnection.emit('machines', result);
+	})
 
 // import routes
 authRoute = require('./routes/auth.js');
