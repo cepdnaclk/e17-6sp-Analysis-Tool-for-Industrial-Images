@@ -3,8 +3,6 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const dotenv = require('dotenv');
 
-
-
 var app = express();
 
 // Enables CORS
@@ -25,9 +23,13 @@ const db = mysql.createConnection({
 
 // import routes
 authRoute = require('./routes/auth.js');
+machineRoute = require('./routes/machine.js')
+moldRoute = require('./routes/mold.js')
 
 // route middleware
 app.use('/api/users', authRoute);
+app.use('/api/machines',machineRoute);
+app.use('/api/molds',moldRoute);
 
 //Initialize new run
 app.route("/api/init")
@@ -75,13 +77,6 @@ app.get("/api/del" , (req,res)=>{
 	})
 });
 
-//get all machine details
-app.get("/api/machines" , (req,res)=>{
-	const sqlmachines = "select * from machines;"
-	db.query(sqlmachines,(err,result)=>{
-		res.send(result);
-	})
-});
 
 //get selected machine details
 app.route("/api/machines/:machine_id")
@@ -97,8 +92,6 @@ app.route("/api/machines/:machine_id")
 
 		var machineID = req.body.machineID;
 		var failedShots = req.body.failedShots;
-
-
 
 		const updateMoldShots = "UPDATE machines SET moldShots = moldShots + 1 WHERE machineID = ? ;"
 		db.query(updateMoldShots,[machineID],(err,result)=>{
@@ -118,15 +111,6 @@ app.route("/api/machines/:machine_id")
 			})
 		}
 	});
-
-
-//get all mold details
-app.get("/api/molds" , (req,res)=>{
-	const sqlMolds = "SELECT * FROM molds;"
-	db.query(sqlMolds,(err,result)=>{
-		res.send(result);
-	})
-});
 
 //get selected mold details
 app.route("/api/molds/:mold_id")
