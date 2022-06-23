@@ -78,39 +78,39 @@ app.get("/api/del" , (req,res)=>{
 });
 
 
-//get selected machine details
-app.route("/api/machines/:machine_id")
-	.get((req,res)=>{
-	const machine_id = req.params.machine_id;
-	const sqlmachines = "select * from machines where machineid = ? ;"
-	db.query(sqlmachines,machine_id,(err,result)=>{
-		res.send(result);
-	})
-	})
-	.post((req,res)=>{
-		// var jsonstr = json.stringify(req.body);
+// //get selected machine details
+// app.route("/api/machines/:machine_id")
+// 	.get((req,res)=>{
+// 	const machine_id = req.params.machine_id;
+// 	const sqlmachines = "select * from machines where machineid = ? ;"
+// 	db.query(sqlmachines,machine_id,(err,result)=>{
+// 		res.send(result);
+// 	})
+// 	})
+// 	.post((req,res)=>{
+// 		// var jsonstr = json.stringify(req.body);
 
-		var machineID = req.body.machineID;
-		var failedShots = req.body.failedShots;
+// 		var machineID = req.body.machineID;
+// 		var failedShots = req.body.failedShots;
 
-		const updateMoldShots = "UPDATE machines SET moldShots = moldShots + 1 WHERE machineID = ? ;"
-		db.query(updateMoldShots,[machineID],(err,result)=>{
-			if(err)throw err;
-			res.send(result);
-			console.log(result);
-			console.log("update");
-		})
+// 		const updateMoldShots = "UPDATE machines SET moldShots = moldShots + 1 WHERE machineID = ? ;"
+// 		db.query(updateMoldShots,[machineID],(err,result)=>{
+// 			if(err)throw err;
+// 			res.send(result);
+// 			console.log(result);
+// 			console.log("update");
+// 		})
 
-		if(failedShots==1){
-			const updateFailedShots = "UPDATE machines SET failedShots = failedShots + 1 WHERE machineID = ? ;"
-			db.query(updateFailedShots,[machineID],(err,result)=>{
-				if(err)throw err;
-				// res.send(result);
-				console.log(result);
-				console.log("update");
-			})
-		}
-	});
+// 		if(failedShots==1){
+// 			const updateFailedShots = "UPDATE machines SET failedShots = failedShots + 1 WHERE machineID = ? ;"
+// 			db.query(updateFailedShots,[machineID],(err,result)=>{
+// 				if(err)throw err;
+// 				// res.send(result);
+// 				console.log(result);
+// 				console.log("update");
+// 			})
+// 		}
+// 	});
 
 //get selected mold details
 app.route("/api/molds/:mold_id")

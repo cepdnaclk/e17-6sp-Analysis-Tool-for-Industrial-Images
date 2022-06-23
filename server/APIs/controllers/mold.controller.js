@@ -20,3 +20,21 @@ exports.all = async (req, res) => {
     });
 
 }
+
+exports.show = async (req, res) => {
+    var data = req.params;
+
+    // console.log(req.params.moldID);
+    // create a new user
+    const resp = Mold.show(data, function(err,result){
+        // console.log(result);
+        //console.log(err);
+
+        if(resp === 2){
+            res.status(400).send('Query error!');
+        }else{
+            res.send(result);
+        }
+    });
+
+}

@@ -8,7 +8,7 @@ const machineController = require("../controllers/machine.controller");
 router.get("/", machineController.all);
 
 // list machine details
-// router.get("/:machineID", machineController.show);
+router.get("/:machineID", machineController.show);
 
 
 // logs in a user

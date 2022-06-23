@@ -16,3 +16,19 @@ module.exports.all = function(data,callback){
         }    
 	})
 }
+
+module.exports.show = function(data,callback){
+    var sqlmachines = "SELECT * FROM molds where moldID = ?;"
+
+    // check whether empID exists in the employees table
+    const status = db.query(sqlmachines,data.moldID,callback,function(err,result){
+        console.log(status);
+        if(result){
+            callback(null,result);
+        }else{
+            this.callback(err,null);
+        }    
+	})
+}
+
+
