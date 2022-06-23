@@ -45,18 +45,13 @@ Machine.create = async (newMachine) => {
     return true;
 }
 
-module.exports = Machine;
 
-const mysql = require('mysql');
-const dotenv = require('dotenv');
 
-const db = require("./db.js");
-
-module.exports.all = function(data,callback){
+Machine.all = function(data,callback){
     var sqlmachines = "SELECT * FROM machines;"
 
     // check whether empID exists in the employees table
-    const status = db.query(sqlmachines,callback,function(err,result){
+    const status = sql.query(sqlmachines,callback,function(err,result){
         console.log(status);
         if(result){
             callback(null,result);
@@ -67,11 +62,11 @@ module.exports.all = function(data,callback){
 }
 
 
-module.exports.show = function(data,callback){
+Machine.show = function(data,callback){
     var sqlmachines = "SELECT * FROM machines where machineID = ?;"
 
     // check whether empID exists in the employees table
-    const status = db.query(sqlmachines,data.machineID,callback,function(err,result){
+    const status = sql.query(sqlmachines,data.machineID,callback,function(err,result){
         console.log(status);
         if(result){
             callback(null,result);
@@ -81,12 +76,22 @@ module.exports.show = function(data,callback){
 	})
 }
 
-module.exports.update = function(data,callback){
+Machine.update = function(data,callback){
 
-
+    console.log(data.machineID);
+    const updateMoldShots = "UPDATE machines SET moldShots = moldShots + 1 WHERE machineID = ?;"
+    // check whether empID exists in the employees table
+    const status = sql.query(updateMoldShots,data.machineID,callback,function(err,result){
+        console.log(status);
+        if(result){
+            callback(null,result);
+        }else{
+            this.callback(err,null);
+        }    
+	})
     if(data.failedShots==1){
         const updateFailedShots = "UPDATE machines SET failedShots = failedShots + 1 WHERE machineID = ? ;"
-        db.query(updateFailedShots,data.machineID,(err,result)=>{
+        sql.query(updateFailedShots,data.machineID,(err,result)=>{
             if(err)throw err;
             // res.send(result);
             console.log(result);
@@ -94,14 +99,6 @@ module.exports.update = function(data,callback){
         })
     }
 
-    const updateMoldShots = "UPDATE machines SET moldShots = moldShots + 1 WHERE machineID = ?;"
-    // check whether empID exists in the employees table
-    const status = db.query(updateMoldShots,data.machineID,callback,function(err,result){
-        console.log(status);
-        if(result){
-            callback(null,result);
-        }else{
-            this.callback(err,null);
-        }    
-	})
 }
+
+module.exports = Machine;

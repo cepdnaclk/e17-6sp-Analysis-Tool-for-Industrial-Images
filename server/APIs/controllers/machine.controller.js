@@ -42,11 +42,11 @@ exports.show = async (req, res) => {
 }
 
 exports.update = async (req, res) => {
-    var data = req.params;
+    var data = req.body;
 
-    console.log(req.params);
+    // console.log(req.body.failedShots);
     // create a new user
-    const resp = Machine.show(data, function(err,result){
+    const resp = Machine.update(data, function(err,result){
         // console.log(result);
         //console.log(err);
 
