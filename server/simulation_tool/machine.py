@@ -3,6 +3,7 @@ Simulation script for a machine runtime
 
 """
 
+from unittest.result import failfast
 import requests
 import json
 import time 
@@ -17,9 +18,9 @@ URL= 'http://localhost:3001/api'
 x = requests.get(URL + '/del')
 print(x.json())
 
-# Get request to get mold data 
-x = requests.get(URL + '/machines')
-print(x.json())
+# # Get request to get mold data 
+# x = requests.get(URL + '/machines')
+# print(x.json())
 
 # Initialize data 
 data = {
@@ -40,7 +41,8 @@ data = {
 x = requests.post(URL + '/init',data=data)
 print(x.json())
 
-# Check initialized data
+# # Check initialized data
+
 x = requests.get(URL + '/machines')
 print(x.json())
 
@@ -66,7 +68,6 @@ while(i<100):
     # 1 second delay
     time.sleep(1)
 
-
     x = requests.post(URL + '/machines/' + data["machineID"], data=data)
     print(x.json())
 
@@ -74,5 +75,5 @@ while(i<100):
     x = requests.get(URL + '/machines')
     print(x.json())
 
-    # x = requests.get(URL + '/molds')
-    # print(x.json())
+    x = requests.get(URL + '/molds')
+    print(x.json())

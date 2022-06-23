@@ -9,9 +9,5 @@ router.get("/", moldController.all);
 // list mold details
 router.get("/:moldID", moldController.show);
 
-
-// logs in a user
-// router.post("/:moldID", moldController.update);
-
 // exports the router
 module.exports = router;

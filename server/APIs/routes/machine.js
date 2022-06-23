@@ -10,9 +10,8 @@ router.get("/", machineController.all);
 // list machine details
 router.get("/:machineID", machineController.show);
 
-
-// logs in a user
-// router.post("/:machineID", machineController.update);
+// Update machine details
+router.post("/:machineID", machineController.update);
 
 // exports the router
 module.exports = router;
