@@ -25,42 +25,44 @@ const db = mysql.createConnection({
 
 // import routes
 authRoute = require('./routes/auth.js');
+initRoute = require('./routes/init.js');
 
 // route middleware
 app.use('/api/users', authRoute);
+app.use('/api/init', initRoute);
 
 //Initialize new run
-app.route("/api/init")
-	.post((req,res)=>{
+// app.route("/api/init")
+// 	.post((req,res)=>{
 
-	    var machineID = req.body.machineID;
-	    var moldID = req.body.moldID;
-        var moldShots = req.body.moldShots;
-	    var failedShots = req.body.failedShots;
-	    var prodRate = req.body.prodRate;
-		var prod_start_date = req.body.prod_start_date;
-		var prod_end_date = req.body.prod_end_date;
-		var monaNumber = req.body.monaNumber;
-		var material = req.body.material;
-		var moldMaker = req.body.moldMaker;
+// 	    var machineID = req.body.machineID;					// *
+// 	    var moldID = req.body.moldID;						// *
+//         var moldShots = req.body.moldShots;
+// 	    var failedShots = req.body.failedShots;
+// 	    var prodRate = req.body.prodRate;
+// 		var prod_start_date = req.body.prod_start_date;		// time stamp
+// 		var prod_end_date = req.body.prod_end_date;			// not required
+// 		var monaNumber = req.body.monaNumber;				// *
+// 		var material = req.body.material;					// *
+// 		var moldMaker = req.body.moldMaker;					// *
 
-		const insert_mold = "INSERT INTO molds VALUES(?,?,?,?);"
-		db.query(insert_mold,[moldID,monaNumber,material,moldMaker],(err,result)=>{
-			if(err)throw err;
-			// res.send(result);
-			console.log(result);
-			console.log("update");
-		})
+// 		const insert_mold = "INSERT INTO molds VALUES(?,?,?,?);"
+// 		db.query(insert_mold,[moldID,monaNumber,material,moldMaker],(err,result)=>{
+// 			if(err)throw err;
+// 			// res.send(result);
+// 			console.log(result);
+// 			console.log("update");
+// 		})
 
-		const insert_machine = "INSERT INTO machines VALUES(?,?,?,?,?,?,?);"
-		db.query(insert_machine,[machineID,moldID,moldShots,failedShots,prodRate,prod_start_date,prod_end_date],(err,result)=>{
-			if(err)throw err;
-			res.send(result);
-			console.log(result);
-			console.log("update");
-		})
+// 		const insert_machine = "INSERT INTO machines VALUES(?,?,?,?,?,?,?);"
+// 		db.query(insert_machine,[machineID,moldID,moldShots,failedShots,prodRate,prod_start_date,prod_end_date],(err,result)=>{
+// 			if(err)throw err;
+// 			res.send(result);
+// 			console.log(result);
+// 			console.log("update");
+// 		})
 
-	});
+// 	});
 	
 // Delete all entries 
 app.get("/api/del" , (req,res)=>{
