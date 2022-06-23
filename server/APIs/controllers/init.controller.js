@@ -1,21 +1,27 @@
-// import init model
+// import models
 const initModel = require("../models/init.model");
+const machineModel = require("../models/machine.model");
+const moldModel = require("../models/mold.model");
 
 // import validation
 const { machineCreateValidation } = require("../validation/machineValidation");
 
 exports.init = async (req, res) => {
     // attributes
-    var machineID = req.body.machineID;
-    var moldID = req.body.moldID;
-    var moldShots = req.body.moldShots;
-    var failedShots = req.body.failedShots;
-    var prodRate = req.body.prodRate;
-    var prod_start_date = req.body.prod_start_date;
-    var prod_end_date = req.body.prod_end_date;
-    var monaNumber = req.body.monaNumber;
-    var material = req.body.material;
-    var moldMaker = req.body.moldMaker;
+    // set value to null if not provided
+    const {
+        machineID = null,
+        moldID = null,
+        moldShots = 0,
+        failedShots = 0,
+        prodRate = 0,
+        prod_start_date = new Date().toISOString().split("T")[0],
+        prod_end_date = null,
+        monaNumber = null,
+        material = null,
+        moldMaker = null
+    } = req.body;
+
 
     // validation
     const error  = machineCreateValidation(req.body);
@@ -28,5 +34,45 @@ exports.init = async (req, res) => {
         });
         return;
     }
+
+    // check if machine exists 
+    // wait for the promise to resolve
+    const machineExists = await (machineModel.checkMachine)(machineID);
     
+    // if machine exists
+    if (machineExists) {
+        // create a json response
+        res.status(400).json({
+            success: false,
+            status: 400,
+            message: "Machine already exists"
+        });
+        return;
+    }
+    
+    // check if mold exists
+    const moldExists = await (moldModel.checkMold)(moldID);
+    if (moldExists) {
+        // create a json response
+        res.status(400).json({
+            success: false,
+            status: 400,
+            message: "Mold already exists"
+        });
+        return;
+    }
+    
+    // create a new machine
+    const newMachine = new machineModel({
+        machineID,
+        moldID,
+        moldShots,
+        failedShots,
+        prodRate,
+        prod_start_date,
+        prod_end_date,
+        monaNumber,
+        material,
+        moldMaker
+    });
 }
