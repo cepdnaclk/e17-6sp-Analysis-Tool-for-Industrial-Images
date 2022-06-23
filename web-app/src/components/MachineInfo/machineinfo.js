@@ -11,8 +11,10 @@ export const MachineInfoPage = (props) => {
 	    moldShots,
 	    failedShots,
 	    prodRate,
-	    prod_startDate,
+        prod_startDate,
+        prod_startTime,
 	    prod_endDate,
+	    prod_endTime,
         ...others } = props;
   return (
     <Grid 
