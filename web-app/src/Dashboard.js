@@ -1,6 +1,6 @@
 // import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Container, Grid } from '@mui/material';
+import { Box, Container, Grid, Card, Typography, styled, Divider } from '@mui/material';
 import { DashboardLayout } from './components/dashboard-layout';
 import { Machine } from './components/Dashboard/machine';
 import React, { useState,useEffect } from 'react';
@@ -98,7 +98,11 @@ import moment from 'moment';
 //         prod_endDate : '01/01/2022',
 //     }
 // ]
-
+const Div = styled('div')(({ theme }) => ({
+    ...theme.typography.button,
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(1),
+  }));
 
 export default function Dashboard(props){
 
@@ -123,7 +127,8 @@ export default function Dashboard(props){
         component="main"
         sx={{
             flexGrow: 1,
-            py: 8
+            py: 8,
+            paddingTop:3
         }}
         >
         <Container maxWidth={false}>
@@ -131,9 +136,18 @@ export default function Dashboard(props){
             container
             spacing={3}
             sx={{alignItems:'center',justifyContents:"center"}}
-            >
+                    >
+                        
 
-            <React.Fragment>
+                        <React.Fragment>
+                            <Grid item xs={12} sx={{ paddingBottom:2,margin:0}}>
+                                <Card sx={{backgroundColor:"neutral.100",paddingTop:2,paddingLeft:2, paddingBottom:1}}>                                
+                                    <Typography variant="h5"  component="div" color={"neutral.900"} >
+                                        Mona Plastics
+                                    </Typography>
+                                </Card>
+                            </Grid> 
+                        
                             {machineData.map((machine, index) => {
                                 
                                 if (machine.prodRate > 100 || machine.prodRate < 0)
