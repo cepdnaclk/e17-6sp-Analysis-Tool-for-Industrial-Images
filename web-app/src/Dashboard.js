@@ -113,6 +113,7 @@ export default function Dashboard(props){
 	}, [props.title]);
 
 	useEffect(()=>{
+        console.log(process.env.REACT_APP_SERVER_BASE_URL)
 		Axios.get(process.env.REACT_APP_SERVER_BASE_URL + '/api/machines').then((response)=>{
 			setMachineData(response.data);
 			console.log(response.data);

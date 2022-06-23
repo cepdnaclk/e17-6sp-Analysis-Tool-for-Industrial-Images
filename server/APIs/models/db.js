@@ -4,10 +4,10 @@ const util = require('util')
 const config = require('../config/config');
 
 // create a connection to the database
-const mc = mysql.createConnection(config);
+const db = mysql.createConnection(config);
 
 // connect to the database
-mc.connect((err) => {
+db.connect((err) => {
     if (err) {
         console.log(err);
     } else {
@@ -16,6 +16,6 @@ mc.connect((err) => {
 }
 );
 
-mc.query = util.promisify(mc.query);
+db.query = util.promisify(db.query);
 
-module.exports = mc;
+module.exports = db;
