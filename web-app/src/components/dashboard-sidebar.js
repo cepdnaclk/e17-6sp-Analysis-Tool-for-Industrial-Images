@@ -70,7 +70,7 @@ export const DashboardSidebar = (props) => {
                   color="inherit"
                   variant="subtitle1"
                 >
-                  Fancy Name
+                  Mona Plastics
                 </Typography>
               </div>
             </Box>
