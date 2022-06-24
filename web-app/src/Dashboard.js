@@ -7,25 +7,43 @@ import React, { useState,useEffect } from 'react';
 import Axios from 'axios';
 import moment from 'moment';
 
-const { io } = require("socket.io-client");
+const machineData = {};
 
+const { io } = require("socket.io-client");
+const socket = io(process.env.REACT_APP_SERVER_BASE_URL, {
+    transports: ['websocket']
+});
+
+
+socket.on("connect_error", (err) => {
+    console.log(`connect_error due to ${err.message}`);
+});
+
+socket.emit('join', ()=>{
+    console.log('connected to the server');
+})
+socket.on('machines', (data) => {
+    console.log(data);
+})
 
 export default function Dashboard(props){
 
-	const [ machineData, setMachineData] = useState([])
+	// const [ machineData, setMachineData] = useState([])
 
 	useEffect(() => {
 		document.title = 'Dashboard';
 	}, [props.title]);
 
-	useEffect(()=>{
-        console.log(process.env.REACT_APP_SERVER_BASE_URL)
-		Axios.get(process.env.REACT_APP_SERVER_BASE_URL + '/api/machines').then((response)=>{
-			setMachineData(response.data);
-			console.log(response.data);
-		})
-        console.log(process.env.REACT_APP_SERVER_BASE_URL + '/api/machines')
-	})
+
+
+	// useEffect(()=>{
+    //     console.log(process.env.REACT_APP_SERVER_BASE_URL)
+	// 	Axios.get(process.env.REACT_APP_SERVER_BASE_URL + '/api/machines').then((response)=>{
+	// 		setMachineData(response.data);
+	// 		console.log(response.data);
+	// 	})
+    //     console.log(process.env.REACT_APP_SERVER_BASE_URL + '/api/machines')
+	// })
 
   
     return (

@@ -3,17 +3,40 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const dotenv = require('dotenv');
 const http = require('http');
-const server = http.createServer(app);
-const { Server } = require("socket.io");
-const io = new Server(server);
-
-var socketConnection = io.on('connection', function(socket){
-	console.log('Connection started');
-})
-
-
+// const machine = require('models/machine.model.js');
 
 var app = express();
+
+const server = http.createServer(app);
+const io = require('socket.io')(server);
+// var io = require("socket.io")(http, {
+// 	cors: {
+// 		origin: '*',
+// 	}
+// });
+
+const Machine = require('models/machine.model');
+
+// const dotenv = require('dotenv');
+
+exports.all = async (req, res) => {
+    var data = req.body;
+
+    // create a new user
+    const resp = Machine.all(data, function(err,result){
+        // console.log(result);
+        //console.log(err);
+
+        if(resp === 2){
+            res.status(400).send('Query error!');
+        }else{
+            res.send(result);
+        }
+
+    });
+
+}
+
 
 // Enables CORS
 const cors = require('cors');
@@ -31,10 +54,23 @@ const db = mysql.createConnection({
     database: 'analysis_tool'
 });
 
-const sqlmachines = "select * from machines;"
-db.query(sqlmachines,(err,result)=>{
-		socketConnection.emit('machines', result);
+
+io.on('connection', (socket) => {
+	socket.on('join', (callback)=>{
+		console.log('Client got connected');
 	})
+	const sqlmachines = "select * from machines;"
+	db.query(sqlmachines,(err,result)=>{
+		if (err) throw err;
+		if(result!=null){
+			socket.emit('machines', result);
+		}
+		// socket.emit('machines', 'fafaf');
+	})
+})
+
+
+
 
 // import routes
 authRoute = require('./routes/auth.js');
@@ -83,7 +119,7 @@ app.route("/api/init")
 app.get("/api/del" , (req,res)=>{
 	const sqlmachines = "delete from machines;"
 	db.query(sqlmachines,(err,result)=>{
-		// res.send(result);
+		res.send(result);
 	})
 	
 	const sqlmolds = "delete from molds;"
@@ -141,6 +177,6 @@ app.route("/api/molds/:mold_id")
 	});
 	
 // start the server and connect to the database in it
-app.listen(3001, async () => {
+server.listen(3001, async () => {
     console.log('Server started on port 3001');
 });
