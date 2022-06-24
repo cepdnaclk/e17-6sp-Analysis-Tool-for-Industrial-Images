@@ -101,4 +101,18 @@ Machine.update = function(data,callback){
 
 }
 
+
+Machine.delete = function(data,callback){
+    var sqlmachines = "DELETE FROM machines WHERE machineID = ?;"
+
+    // check whether empID exists in the employees table
+    const status = sql.query(sqlmachines,data.machineID,callback,function(err,result){
+        console.log(status);
+        if(result){
+            callback(null,result);
+        }else{
+            this.callback(err,null);
+        }    
+	})
+}
 module.exports = Machine;

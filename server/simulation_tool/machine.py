@@ -15,12 +15,15 @@ from random import randint
 URL= 'http://localhost:3001/api'
 
 # Initialize operation post request
-x = requests.get(URL + '/del')
+x = requests.delete(URL + '/machines/D003')
 print(x.json())
 
-# # Get request to get mold data 
-# x = requests.get(URL + '/machines')
-# print(x.json())
+x = requests.delete(URL + '/molds/m003')
+print(x.json())
+
+# Get request to get mold data 
+x = requests.get(URL + '/machines')
+print(x.json())
 
 # Initialize data 
 data = {

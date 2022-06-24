@@ -75,18 +75,18 @@ app.use('/api/machines',machineRoute);
 app.use('/api/molds',moldRoute);
 
 	
-// Delete all entries 
-app.get("/api/del" , (req,res)=>{
-	const sqlmachines = "delete from machines;"
-	db.query(sqlmachines,(err,result)=>{
-		res.send(result);
-	})
+// // Delete all entries 
+// app.get("/api/del" , (req,res)=>{
+// 	const sqlmachines = "delete from machines;"
+// 	db.query(sqlmachines,(err,result)=>{
+// 		res.send(result);
+// 	})
 	
-	const sqlmolds = "delete from molds;"
-	db.query(sqlmolds,(err,result)=>{
-		res.send(result);
-	})
-});
+// 	const sqlmolds = "delete from molds;"
+// 	db.query(sqlmolds,(err,result)=>{
+// 		res.send(result);
+// 	})
+// });
 
 
 // //get selected machine details
@@ -117,6 +117,6 @@ app.get("/api/del" , (req,res)=>{
 // 	});
 
 // start the server and connect to the database in it
-server.listen(3001, async () => {
+server.listen(dotenv.config().parsed.SERVER_PORT, async () => {
     console.log('Server started on port 3001');
 });
