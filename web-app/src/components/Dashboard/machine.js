@@ -52,7 +52,7 @@ export const Machine = (props) => {
                 color="textPrimary"
                 variant="h6"
               >
-                Mona Plastic {monaNumber}
+                Mona Number {monaNumber}
               </Typography>
             </Grid>
             {/* statics table */}
