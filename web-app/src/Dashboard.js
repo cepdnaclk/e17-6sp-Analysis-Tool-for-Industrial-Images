@@ -69,8 +69,8 @@ export default function Dashboard(props){
             <React.Fragment>
                             {machineData.map((machine, index) => {
                                 
-                                if (machine.prodRate > 100 || machine.prodRate < 0)
-                                    machine.prodRate = "error"
+                                if (machine.prodRate!= 0)
+                                    machine.status = "Online"
                                 
                                 if (machine.status != "Online" && machine.status != "Offline")
                                     machine.status = "error"
