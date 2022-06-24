@@ -22,23 +22,25 @@ const Machine = require('../APIs/models/machine.model');
 
 io.on('connection', (socket) => {
 	socket.on('join', (callback)=>{
-		console.log('Client got connected');
+		// console.log('Client got connected');
 	})
     var data;
 
-    // create a new user
-    const resp = Machine.all(data, function(err,result){
-        console.log(resp);
-        //console.log(err);
-
-		
-        // if(resp === 2){
-		// 	console.log("Error");
-        // }else{
-			socket.emit('machines', result);
-        // }
-
-    });
+    setInterval(function(){
+		// create a new user
+		const resp = Machine.all(data, function(err,result){
+			// console.log('result');
+			//console.log(err);
+	
+			
+			// if(resp === 2){
+			// 	console.log("Error");
+			// }else{
+				socket.emit('machines', result);
+			// }
+	
+		});
+	}, 1000);
 })
 
 

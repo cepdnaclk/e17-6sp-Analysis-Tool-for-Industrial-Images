@@ -4,6 +4,6 @@ module.exports = {
     host: 'localhost',
     user: 'root',
     password: dotenv.config().parsed.DB_PASSWORD,
-    // password: ,
+    // password: '',
     database: 'analysis_tool'
 };
