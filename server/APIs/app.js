@@ -64,46 +64,16 @@ app.use(express.urlencoded({ extended: false }));
 
 // import routes
 authRoute = require('./routes/auth.js');
-machineRoute = require('./routes/machine.js')
-moldRoute = require('./routes/mold.js')
+machineRoute = require('./routes/machine.js');
+moldRoute = require('./routes/mold.js');
+initRoute = require('./routes/init.js');
 
 // route middleware
 app.use('/api/users', authRoute);
+app.use('/api/init', initRoute);
 app.use('/api/machines',machineRoute);
 app.use('/api/molds',moldRoute);
 
-//Initialize new run
-app.route("/api/init")
-	.post((req,res)=>{
-
-	    var machineID = req.body.machineID;
-	    var moldID = req.body.moldID;
-        var moldShots = req.body.moldShots;
-	    var failedShots = req.body.failedShots;
-	    var prodRate = req.body.prodRate;
-		var prod_start_date = req.body.prod_start_date;
-		var prod_end_date = req.body.prod_end_date;
-		var monaNumber = req.body.monaNumber;
-		var material = req.body.material;
-		var moldMaker = req.body.moldMaker;
-
-		const insert_mold = "INSERT INTO molds VALUES(?,?,?,?);"
-		db.query(insert_mold,[moldID,monaNumber,material,moldMaker],(err,result)=>{
-			if(err)throw err;
-			// res.send(result);
-			console.log(result);
-			console.log("update");
-		})
-
-		const insert_machine = "INSERT INTO machines VALUES(?,?,?,?,?,?,?);"
-		db.query(insert_machine,[machineID,moldID,moldShots,failedShots,prodRate,prod_start_date,prod_end_date],(err,result)=>{
-			if(err)throw err;
-			res.send(result);
-			console.log(result);
-			console.log("update");
-		})
-
-	});
 	
 // Delete all entries 
 app.get("/api/del" , (req,res)=>{
@@ -121,13 +91,6 @@ app.get("/api/del" , (req,res)=>{
 
 // //get selected machine details
 // app.route("/api/machines/:machine_id")
-// 	.get((req,res)=>{
-// 	const machine_id = req.params.machine_id;
-// 	const sqlmachines = "select * from machines where machineid = ? ;"
-// 	db.query(sqlmachines,machine_id,(err,result)=>{
-// 		res.send(result);
-// 	})
-// 	})
 // 	.post((req,res)=>{
 // 		// var jsonstr = json.stringify(req.body);
 
@@ -153,19 +116,6 @@ app.get("/api/del" , (req,res)=>{
 // 		}
 // 	});
 
-//get selected mold details
-app.route("/api/molds/:mold_id")
-	.get((req,res)=>{
-		const mold_id = req.params.mold_id;
-		const sqlMolds = "SELECT * FROM molds where moldID = ? ;"
-		db.query(sqlMolds,mold_id,(err,result)=>{
-			res.send(result);
-		})
-	})
-	.post((req,res)=>{
-		res.send('POST REQUEST')
-	});
-	
 // start the server and connect to the database in it
 server.listen(3001, async () => {
     console.log('Server started on port 3001');
