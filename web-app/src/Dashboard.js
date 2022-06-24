@@ -7,7 +7,7 @@ import React, { useState,useEffect } from 'react';
 import Axios from 'axios';
 import moment from 'moment';
 
-const machineData = {};
+// const machineData = {};
 
 const { io } = require("socket.io-client");
 const socket = io(process.env.REACT_APP_SERVER_BASE_URL, {
@@ -15,20 +15,11 @@ const socket = io(process.env.REACT_APP_SERVER_BASE_URL, {
 });
 
 
-socket.on("connect_error", (err) => {
-    console.log(`connect_error due to ${err.message}`);
-});
 
-socket.emit('join', ()=>{
-    console.log('connected to the server');
-})
-socket.on('machines', (data) => {
-    console.log(data);
-})
 
 export default function Dashboard(props){
 
-	// const [ machineData, setMachineData] = useState([])
+	const [ machineData, setMachineData] = useState([])
 
 	useEffect(() => {
 		document.title = 'Dashboard';
@@ -44,6 +35,19 @@ export default function Dashboard(props){
 	// 	})
     //     console.log(process.env.REACT_APP_SERVER_BASE_URL + '/api/machines')
 	// })
+    useEffect(() => {
+        socket.on("connect_error", (err) => {
+            console.log(`connect_error due to ${err.message}`);
+        });
+        
+        socket.emit('join', ()=>{
+            console.log('connected to the server');
+        })
+        socket.on('machines', (data) => {
+            // console.log(data);
+            setMachineData(data);
+        })
+    })
 
   
     return (
