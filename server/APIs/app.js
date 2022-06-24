@@ -15,27 +15,32 @@ const io = require('socket.io')(server);
 // 	}
 // });
 
-const Machine = require('models/machine.model');
+const Machine = require('../APIs/models/machine.model');
 
 // const dotenv = require('dotenv');
 
-exports.all = async (req, res) => {
-    var data = req.body;
+
+io.on('connection', (socket) => {
+	socket.on('join', (callback)=>{
+		console.log('Client got connected');
+	})
+    var data;
 
     // create a new user
     const resp = Machine.all(data, function(err,result){
-        // console.log(result);
+        console.log(resp);
         //console.log(err);
 
-        if(resp === 2){
-            res.status(400).send('Query error!');
-        }else{
-            res.send(result);
-        }
+		
+        // if(resp === 2){
+		// 	console.log("Error");
+        // }else{
+			socket.emit('machines', result);
+        // }
 
     });
+})
 
-}
 
 
 // Enables CORS
@@ -46,30 +51,13 @@ app.use(cors({ origin: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// connection configurations
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: dotenv.config().parsed.DB_USER,
-    password: 'dahaminimansa5',
-    database: 'analysis_tool'
-});
-
-
-io.on('connection', (socket) => {
-	socket.on('join', (callback)=>{
-		console.log('Client got connected');
-	})
-	const sqlmachines = "select * from machines;"
-	db.query(sqlmachines,(err,result)=>{
-		if (err) throw err;
-		if(result!=null){
-			socket.emit('machines', result);
-		}
-		// socket.emit('machines', 'fafaf');
-	})
-})
-
-
+// // connection configurations
+// const db = mysql.createConnection({
+//     host: 'localhost',
+//     user: dotenv.config().parsed.DB_USER,
+//     password: dotenv.config().parsed.DB_PASSWORD,
+//     database: 'analysis_tool'
+// });
 
 
 // import routes
