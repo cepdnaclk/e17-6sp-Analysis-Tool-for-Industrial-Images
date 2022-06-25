@@ -15,24 +15,24 @@ const Navitems = [
     icon: (<ChartBarIcon fontSize="small" />),
     title: 'Dashboard'
   },
-  {
-    href: '/productdata',
-    icon: (<ShoppingBagIcon fontSize="small" />),
-    title: 'Production Data'
-  }
+  // {
+  //   href: '/productdata',
+  //   icon: (<ShoppingBagIcon fontSize="small" />),
+  //   title: 'Production Data'
+  // }
 ];
 
 const items = [
-  {
-    href: '/profiles',
-    icon: (<UserIcon fontSize="small" />),
-    title: 'Profile'
-  },
-  {
-    href: '/login',
-    icon: (<LogOutIcon fontSize="small" />),
-    title: 'Logout'
-  }
+  // {
+  //   href: '/profiles',
+  //   icon: (<UserIcon fontSize="small" />),
+  //   title: 'Profile'
+  // },
+  // {
+  //   href: '/login',
+  //   icon: (<LogOutIcon fontSize="small" />),
+  //   title: 'Logout'
+  // }
 ];
 
 export const DashboardSidebar = (props) => {
@@ -68,7 +68,7 @@ export const DashboardSidebar = (props) => {
               <div>
                 <Typography
                   color="inherit"
-                  variant="subtitle1"
+                  variant="h5"
                 >
                   Mona Plastics
                 </Typography>
