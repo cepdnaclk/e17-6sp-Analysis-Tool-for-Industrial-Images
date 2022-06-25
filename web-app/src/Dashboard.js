@@ -40,9 +40,6 @@ export default function Dashboard(props){
             console.log(`connect_error due to ${err.message}`);
         });
         
-        socket.emit('join', ()=>{
-            console.log('connected to the server');
-        })
         socket.on('machines', (data) => {
             // console.log(data);
             setMachineData(data);

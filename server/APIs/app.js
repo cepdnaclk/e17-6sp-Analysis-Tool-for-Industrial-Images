@@ -21,9 +21,6 @@ const Machine = require('../APIs/models/machine.model');
 
 
 io.on('connection', (socket) => {
-	socket.on('join', (callback)=>{
-		// console.log('Client got connected');
-	})
     var data;
 
     setInterval(function(){
