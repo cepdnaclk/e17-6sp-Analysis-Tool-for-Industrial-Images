@@ -1,5 +1,6 @@
 // import user model
 const Mold = require('../models/mold.model');
+const Machine = require('../models/machine.model');
 
 const dotenv = require('dotenv');
 
@@ -58,6 +59,19 @@ exports.show = async (req, res) => {
 
 exports.delete = async (req, res) => {
     var data =  req.params;
+
+    // check whether mold exists in the machines table
+    const moldExists_Machine = await (Machine.checkMold)(req.params.moldID);
+
+    if (moldExists_Machine) {
+        res.status(400).json({
+            success: false,
+            status: 400,
+            message: "Mold is in use"
+        });
+        return;
+    }
+
     const moldExists = await (Mold.checkMold)(req.params.moldID);
     
     // if mold exists
@@ -81,7 +95,7 @@ exports.delete = async (req, res) => {
         res.status(404).json({
             success: false,
             status: 404,
-            message: "Mold does not exists"
+            message: "Mold does not exist"
         });
 
         return;
