@@ -54,34 +54,26 @@ exports.init = async (req, res) => {
     
     // check if mold exists
     const moldExists = await (moldModel.checkMold)(moldID);
-    if (moldExists) {
-        // create a json response
-        res.status(400).json({
-            success: false,
-            status: 400,
-            message: "Mold already exists"
+    if (!moldExists) {
+        // create a mold
+        const newMold = new moldModel({
+            moldID,
+            monaNumber,
+            material,
+            moldMaker
         });
-        return;
-    }
 
-    // create a mold
-    const newMold = new moldModel({
-        moldID,
-        monaNumber,
-        material,
-        moldMaker
-    });
+        const createdMold = await (moldModel.create)(newMold);
 
-    const createdMold = await (moldModel.create)(newMold);
-
-    if (!createdMold) {
-        // create a json response
-        res.status(400).json({
-            success: false,
-            status: 400,
-            message: "Error creating mold"
-        });
-        return;
+        if (!createdMold) {
+            // create a json response
+            res.status(400).json({
+                success: false,
+                status: 400,
+                message: "Error creating mold"
+            });
+            return;
+        }
     }
     
     // create a new machine

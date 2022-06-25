@@ -21,22 +21,14 @@ Machine.checkMachine = async (machineID) => {
     return false;
 }
 
-// Machine.checkMachine = (machineID, result) => {
-//     sql.query(`SELECT * FROM machines WHERE machineID = ?`, [machineID], (err, res) => {
-//         if (err) {
-//             console.log("error: ", err);
-//             return;
-//         }
-//         if (res.length) {
-//             console.log("found machine");
-//             return "machine exists";
-//         }
-//         // not found machine with the id
-//         result({ kind: "not_found" }, null);
-//         return "machine does not exist";
-//     }
-//     );
-// }
+// check whether a mold exists in the machines table
+Machine.checkMold = async (moldID) => {
+    const row = await sql.query("SELECT * FROM machines WHERE moldID = ?", [moldID]);
+    if (row.length > 0) {
+        return true;
+    }
+    return false;
+}
 
 // create a new machine
 Machine.create = async (newMachine) => {
