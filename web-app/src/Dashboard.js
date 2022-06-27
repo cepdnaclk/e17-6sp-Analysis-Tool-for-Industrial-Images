@@ -133,9 +133,6 @@ export default function Dashboard(props){
 	}, [props.title]);
 
 
-
-
-
 	// useEffect(()=>{
     //     console.log(process.env.REACT_APP_SERVER_BASE_URL)
 	// 	Axios.get(process.env.REACT_APP_SERVER_BASE_URL + '/api/machines').then((response)=>{
@@ -150,7 +147,10 @@ export default function Dashboard(props){
         });
         
         socket.on('machines', (data) => {
-            // console.log(data);
+            if (data.prodRate!= 0)
+                data.status = "Online"
+            console.log("data  ");
+            console.log(data);
             setMachineData(data);
         })
     })
@@ -186,12 +186,14 @@ export default function Dashboard(props){
 
                                 if (machine.prodRate!= 0)
                                     machine.status = "Online"
-                                if (machine.status != "Online" && machine.status != "Offline")
-                                    machine.status = "error"
+                                else
+                                    machine.status = "Offline"
+                                
                                 if (machine.material === undefined)
                                     machine.material = "none"
                                 if (machine.moldMaker === undefined)
                                     machine.moldMaker = "none"
+                                
                                 console.log(machine.moldMaker)
                                 return (
                     
