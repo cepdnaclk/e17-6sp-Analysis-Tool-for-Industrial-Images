@@ -20,9 +20,9 @@ accordingly.
 ### Setting up API
 
 - create .env file
-- include DB_USER and DB_PASSWORD
+- include DB_USER , DB_PASSWORD and SERVER_PORT
 - npm install
-- npm start (starts running on 'localhost:3001')
+- nodemon start (starts running on 'localhost:3001')
 
 ### Setting up webapp
 
@@ -38,20 +38,63 @@ API endpoints accessed by machines.
 #### POST
 
 - for initial
+    POST
     /api/init
+
+    ```json
+    {
+        "machineID"         : "D003",
+        "moldID"            : "m003",
+        "moldShots"         : 0,
+        "failedShots"       : 0,
+        "prodRate"          : 0,
+        "prod_start_date"   : "2022-04-12",
+        "prod_end_date"     : "2022-06-20",
+        "monaNumber"        : "mon222",
+        "material"          : "metal",
+        "moldMaker"         : "china"
+    }
+    ```
+
 - for updates
-    /api/machines/{machine_id}
+    POST
+    /api/machines/{machineID}
+
+    ```json
+    {
+        "machineID"         : "D003",
+        "failedShots"       : 0, // 1 for positive 0 for negative
+    }
+    ```
 
 ### Web app
 
 API endpoints accessed by webapp.
 
-#### GET
 
-- /api/machines
-- /api/machines/{machine_id}
-- /api/molds
-- /apt/molds/{mold_id}
+- Get all details 
+
+    GET
+
+    /api/machines
+    
+    /api/molds
+
+- for machine specific
+
+    GET
+
+    /api/machines/{machine_id}
+    
+    /api/molds/{mold_id}
+
+- for delete
+
+    DELETE
+
+    /api/machines/{machineID}
+
+    /api/molds/{moldID}
 
 ## Database
 

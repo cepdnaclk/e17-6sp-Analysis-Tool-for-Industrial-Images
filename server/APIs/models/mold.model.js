@@ -54,4 +54,18 @@ Mold.show = function(data,callback){
 	})
 }
 
+Mold.delete = function(data,callback){
+    var sqlmachines = "DELETE FROM molds WHERE moldID = ?;"
+
+    // check whether empID exists in the employees table
+    const status = sql.query(sqlmachines,data.moldID,callback,function(err,result){
+        console.log(status);
+        if(result){
+            callback(null,result);
+        }else{
+            this.callback(err,null);
+        }    
+	})
+}
+
 module.exports = Mold;

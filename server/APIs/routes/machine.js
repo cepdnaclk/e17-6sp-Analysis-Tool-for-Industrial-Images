@@ -13,5 +13,8 @@ router.get("/:machineID", machineController.show);
 // Update machine details
 router.post("/:machineID", machineController.update);
 
+//Delete machine
+router.delete("/:machineID",machineController.delete);
+
 // exports the router
 module.exports = router;

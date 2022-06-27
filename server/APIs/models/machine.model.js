@@ -21,22 +21,14 @@ Machine.checkMachine = async (machineID) => {
     return false;
 }
 
-// Machine.checkMachine = (machineID, result) => {
-//     sql.query(`SELECT * FROM machines WHERE machineID = ?`, [machineID], (err, res) => {
-//         if (err) {
-//             console.log("error: ", err);
-//             return;
-//         }
-//         if (res.length) {
-//             console.log("found machine");
-//             return "machine exists";
-//         }
-//         // not found machine with the id
-//         result({ kind: "not_found" }, null);
-//         return "machine does not exist";
-//     }
-//     );
-// }
+// check whether a mold exists in the machines table
+Machine.checkMold = async (moldID) => {
+    const row = await sql.query("SELECT * FROM machines WHERE moldID = ?", [moldID]);
+    if (row.length > 0) {
+        return true;
+    }
+    return false;
+}
 
 // create a new machine
 Machine.create = async (newMachine) => {
@@ -49,7 +41,7 @@ Machine.create = async (newMachine) => {
 
 Machine.all = function(data,callback){
     var sqlmachines = "SELECT * FROM machines;"
-
+    
     // check whether empID exists in the employees table
     const status = sql.query(sqlmachines,callback,function(err,result){
         console.log(status);
@@ -101,4 +93,18 @@ Machine.update = function(data,callback){
 
 }
 
+
+Machine.delete = function(data,callback){
+    var sqlmachines = "DELETE FROM machines WHERE machineID = ?;"
+
+    // check whether empID exists in the employees table
+    const status = sql.query(sqlmachines,data.machineID,callback,function(err,result){
+        console.log(status);
+        if(result){
+            callback(null,result);
+        }else{
+            this.callback(err,null);
+        }    
+	})
+}
 module.exports = Machine;
