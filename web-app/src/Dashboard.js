@@ -147,10 +147,8 @@ export default function Dashboard(props){
         });
         
         socket.on('machines', (data) => {
-            if (data.prodRate!= 0)
-                data.status = "Online"
-            console.log("data  ");
-            console.log(data);
+            data[0].status = "Online"
+            // console.log();
             setMachineData(data);
         })
     })
@@ -184,10 +182,10 @@ export default function Dashboard(props){
                             {machineData.map((machine, index) => {
                                 
 
-                                if (machine.prodRate!= 0)
-                                    machine.status = "Online"
-                                else
-                                    machine.status = "Offline"
+                                // if (machine.prodRate!= 0)
+                                machine.status = "Online"
+                                // else
+                                    // machine.status = "Offline"
                                 
                                 if (machine.material === undefined)
                                     machine.material = "none"
