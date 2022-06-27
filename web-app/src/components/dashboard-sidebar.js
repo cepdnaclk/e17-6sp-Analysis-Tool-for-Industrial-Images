@@ -59,16 +59,18 @@ export const DashboardSidebar = (props) => {
                 backgroundColor: 'rgba(255, 255, 255, 0.04)',
                 cursor: 'pointer',
                 display: 'flex',
-                justifyContent: 'space-between',
+                justifyContent: 'center',
                 px: 3,
                 py: '0',
                 borderRadius: 1
               }}
             >
-              <div>
+              <div sx={{justifyContent: 'center'}}>
                 <Typography
                   color="inherit"
-                  variant="h5"
+                  variant="h6"
+                  sx={{paddingTop:2,paddingLeft:2,paddingBottom:1,paddingRight:2,justifyContent: 'center',}}
+
                 >
                   Mona Plastics
                 </Typography>
