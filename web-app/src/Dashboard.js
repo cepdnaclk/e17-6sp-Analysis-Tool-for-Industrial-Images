@@ -6,116 +6,6 @@ import { Machine } from './components/Dashboard/machine';
 import React, { useState,useEffect } from 'react';
 import Axios from 'axios';
 import moment from 'moment';
-// const machineData = [
-//   {
-//       machineID : '001',
-//       moldID : '52078592',
-//       status : 'Online',
-//       moldShots : '10',
-//       failedShots : '0',
-//         prodRate: '100',
-//         moldMaker : 'Tony',
-//         material : 'ABS',
-//       prod_startDate : '01/01/2020',
-//       prod_endDate : '01/01/2022',
-//   },
-//   {
-//       machineID : '002',
-//       moldID : '82525425',
-//       status : 'Online',
-//       moldShots : '10',
-//       failedShots : '0',
-//       prodRate: '100',
-//       moldMaker : 'Tony',
-//         material : 'ABS',
-//       prod_startDate : '01/01/2020',
-//       prod_endDate : '01/01/2022',
-//   },
-//   {
-//       machineID : '003',
-//       moldID : '35636356',
-//       status : 'Offline',
-//       moldShots : '10',
-//       failedShots : '0',
-//       prodRate: '100',
-//       moldMaker : 'Tony',
-//         material : 'ABS',
-//       prod_startDate : '01/01/2020',
-//       prod_endDate : '01/01/2022',
-//     },
-//     {
-//         machineID : '004',
-//         moldID : '35636356',
-//         status : 'Online',
-//         moldShots : '10',
-//         failedShots : '0',
-//         prodRate: '100',
-//         moldMaker : 'Tony',
-//         material : 'ABS',
-//         prod_startDate : '01/01/2020',
-//         prod_endDate : '01/01/2022',
-//     },
-//     {
-//         machineID : '005',
-//         moldID : '35636356',
-//         status : 'Online',
-//         moldShots : '10',
-//         failedShots : '0',
-//         prodRate: '100',
-//         moldMaker : 'Tony',
-//         material : 'ABS',
-//         prod_startDate : '01/01/2020',
-//         prod_endDate : '01/01/2022',
-//     },
-//     {
-//         machineID : '006',
-//         moldID : '35636356',
-//         status : 'Offline',
-//         moldShots : '10',
-//         failedShots : '0',
-//         prodRate: '100',
-//         moldMaker : 'Tony',
-//         material : 'ABS',
-//         prod_startDate : '01/01/2020',
-//         prod_endDate : '01/01/2022',
-//     },
-//     {
-//         machineID : '007',
-//         moldID : '35636356',
-//         status : 'Online',
-//         moldShots : '10',
-//         failedShots : '0',
-//         prodRate: '100',
-//         moldMaker : 'Tony',
-//         material : 'ABS',
-//         prod_startDate : '01/01/2020',
-//         prod_endDate : '01/01/2022',
-//     },
-//     {
-//         machineID : '008',
-//         moldID : '35636356',
-//         status : 'Online',
-//         moldShots : '10',
-//         failedShots : '0',
-//         prodRate: '100',
-//         moldMaker : 'Tony',
-//         material : 'ABS',
-//         prod_startDate : '01/01/2020',
-//         prod_endDate : '01/01/2022',
-//     },
-//     {
-//         machineID : '009',
-//         moldID : '35636356',
-//         status : 'Online',
-//         moldShots : '10',
-//         failedShots : '0',
-//         prodRate: '100',
-//         moldMaker : 'Tony',
-//         material : 'ABS',
-//         prod_startDate : '01/01/2020',
-//         prod_endDate : '01/01/2022',
-//     }
-// ]
 
 const { io } = require("socket.io-client");
 const socket = io(process.env.REACT_APP_SERVER_BASE_URL, {
@@ -127,6 +17,7 @@ const socket = io(process.env.REACT_APP_SERVER_BASE_URL, {
 export default function Dashboard(props){
 
 	const [ machineData, setMachineData] = useState([])
+    const [ moldData, setMoldData] = useState([])
 
 	useEffect(() => {
 		document.title = 'Dashboard';
@@ -141,6 +32,18 @@ export default function Dashboard(props){
 	// 	})
     //     console.log(process.env.REACT_APP_SERVER_BASE_URL + '/api/machines')
 	// })
+
+    useEffect(() => {
+        socket.on("connect_error", (err) => {
+            console.log(`connect_error due to ${err.message}`);
+        });
+        socket.on('molds', (data) => {
+            setMoldData(data);
+            // console.log(data.find(mold => mold.moldID === 'm002').material);
+        })
+    })
+
+
     useEffect(() => {
         socket.on("connect_error", (err) => {
             console.log(`connect_error due to ${err.message}`);
@@ -152,7 +55,6 @@ export default function Dashboard(props){
             setMachineData(data);
         })
     })
-
   
     return (
         <DashboardLayout>
@@ -215,8 +117,8 @@ export default function Dashboard(props){
                                             moldShots={machine.moldShots}
                                             failedShots={machine.failedShots}
                                             prodRate={machine.prodRate}
-                                            material={machine.material}
-                                            moldMaker={machine.moldMaker}
+                                            material={moldData.find(mold => mold.moldID === machine.moldID).material}
+                                            moldMaker={moldData.find(mold => mold.moldID === machine.moldID).moldMaker}
                                             prod_startDate={moment(machine.prod_start_date).format("DD-MM-YYYY")}
                                             prod_startTime={moment(machine.prod_start_date).format("kk:mm:ss")}
                                             prod_endDate={moment(machine.prod_end_date).format("DD-MM-YYYY")}
