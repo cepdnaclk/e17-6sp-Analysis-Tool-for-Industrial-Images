@@ -11,6 +11,7 @@ exports.all = async (req, res) => {
     const resp = Machine.all(data, function(err,result){
         // console.log(result);
         //console.log(err);
+        
 
         if(resp === 2){
             res.status(400).send('Query error!');
