@@ -16,6 +16,7 @@ const io = require('socket.io')(server);
 // });
 
 const Machine = require('../APIs/models/machine.model');
+const Mold = require('../APIs/models/mold.model');
 
 // const dotenv = require('dotenv');
 
@@ -24,19 +25,14 @@ io.on('connection', (socket) => {
     var data;
 
     setInterval(function(){
-		// create a new user
-		const resp = Machine.all(data, function(err,result){
-			// console.log('result');
-			//console.log(err);
-	
-			
-			// if(resp === 2){
-			// 	console.log("Error");
-			// }else{
-				socket.emit('machines', result);
-			// }
-	
+		const resp = Mold.all(data, function(err,result){
+			socket.emit('molds', result);
 		});
+		const resp2 = Machine.all(data, function(err,result){
+			socket.emit('machines', result);
+		});
+
+		// Get mold details
 	}, 1000);
 })
 
