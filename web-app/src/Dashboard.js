@@ -88,13 +88,14 @@ export default function Dashboard(props){
                                 machine.status = "Online"
                                 // else
                                     // machine.status = "Offline"
-                                
+                                machine.material = moldData.find(mold => mold.moldID === machine.moldID).material
+                                machine.moldMaker = moldData.find(mold => mold.moldID === machine.moldID).moldMaker
                                 if (machine.material === undefined)
                                     machine.material = "none"
                                 if (machine.moldMaker === undefined)
                                     machine.moldMaker = "none"
                                 
-                                console.log(machine.moldMaker)
+                                // console.log(machine.moldMaker)
                                 return (
                     
                                     <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={index} sx={{ alignItems: 'center', justifyContents: "center", minWidth: 290, marginBottom: 5 }} >
@@ -117,8 +118,8 @@ export default function Dashboard(props){
                                             moldShots={machine.moldShots}
                                             failedShots={machine.failedShots}
                                             prodRate={machine.prodRate}
-                                            material={moldData.find(mold => mold.moldID === machine.moldID).material}
-                                            moldMaker={moldData.find(mold => mold.moldID === machine.moldID).moldMaker}
+                                            material={machine.material}
+                                            moldMaker={machine.moldMaker}
                                             prod_startDate={moment(machine.prod_start_date).format("DD-MM-YYYY")}
                                             prod_startTime={moment(machine.prod_start_date).format("kk:mm:ss")}
                                             prod_endDate={moment(machine.prod_end_date).format("DD-MM-YYYY")}
