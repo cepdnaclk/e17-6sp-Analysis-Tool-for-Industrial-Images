@@ -29,7 +29,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "pretty": "prettier --write \"./**/*.{js,jsx,json}\""
   },
   "eslintConfig": {
     "extends": [
@@ -50,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.18.2",
     "dotenv-webpack": "^7.1.0",
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
