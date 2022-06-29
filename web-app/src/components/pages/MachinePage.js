@@ -1,8 +1,9 @@
 import React from "react";
-import { Box, Container, Grid, Card, Typography } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Machine } from "../machine";
 import moment from "moment";
+import { Title } from "../title.js";
 
 export const MachinePage = ({ machineData }) => {
   return (
@@ -21,20 +22,7 @@ export const MachinePage = ({ machineData }) => {
           sx={{ alignItems: "center", justifyContents: "center" }}
         >
           <React.Fragment>
-            <Grid item xs={12} sx={{ paddingBottom: 2, margin: 0 }}>
-              <Card
-                sx={{
-                  backgroundColor: "neutral.700",
-                  paddingTop: 2,
-                  paddingLeft: 2,
-                  paddingBottom: 1,
-                }}
-              >
-                <Typography variant="h5" component="div" color={"#10B981"}>
-                  Molding Section Statistics
-                </Typography>
-              </Card>
-            </Grid>
+            <Title title="Molding Section Statistics" />
 
             {machineData.map((machine, index) => {
               // if (machine.prodRate!= 0)
