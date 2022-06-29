@@ -25,9 +25,9 @@ io.on('connection', (socket) => {
     var data;
 
     setInterval(function(){
-		const resp = Mold.all(data, function(err,result){
-			socket.emit('molds', result);
-		});
+		// const resp = Mold.all(data, function(err,result){
+		// 	socket.emit('molds', result);
+		// });
 		const resp2 = Machine.all(data, function(err,result){
 			socket.emit('machines', result);
 		});
