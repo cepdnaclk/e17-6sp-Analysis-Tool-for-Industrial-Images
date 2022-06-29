@@ -1,48 +1,37 @@
-import { Link } from 'react-router-dom';
-import { Box, Button, Container, Typography } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-
+import { Link } from "react-router-dom";
+import { Box, Button, Container, Typography } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const NotFound = () => (
   <>
     <head>
-      <title>
-        404 | Material Kit
-      </title>
+      <title>404 | Material Kit</title>
     </head>
     <Box
       component="main"
       sx={{
-        alignItems: 'center',
-        display: 'flex',
+        alignItems: "center",
+        display: "flex",
         flexGrow: 1,
-        minHeight: '100%'
+        minHeight: "100%",
       }}
     >
       <Container maxWidth="md">
         <Box
           sx={{
-            alignItems: 'center',
-            display: 'flex',
-            flexDirection: 'column'
+            alignItems: "center",
+            display: "flex",
+            flexDirection: "column",
           }}
         >
-          <Typography
-            align="center"
-            color="textPrimary"
-            variant="h1"
-          >
+          <Typography align="center" color="textPrimary" variant="h1">
             404: The page you are looking for isn’t here
           </Typography>
-          <Typography
-            align="center"
-            color="textPrimary"
-            variant="subtitle2"
-          >
+          <Typography align="center" color="textPrimary" variant="subtitle2">
             You either tried some shady route or you came here by mistake.
             Whichever it is, try using the navigation
           </Typography>
-          <Box sx={{ textAlign: 'center' }}>
+          <Box sx={{ textAlign: "center" }}>
             {/* <img
               alt="Under development"
               src="/static/images/undraw_page_not_found_su7k.svg"
@@ -54,13 +43,10 @@ const NotFound = () => (
               }}
             /> */}
           </Box>
-          <Link
-            to="/"
-            passHref
-          >
+          <Link to="/" passHref>
             <Button
               component="a"
-              startIcon={(<ArrowBackIcon fontSize="small" />)}
+              startIcon={<ArrowBackIcon fontSize="small" />}
               sx={{ mt: 3 }}
               variant="contained"
             >

@@ -1,19 +1,21 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 // import { useEffect } from 'react';
 // import PropTypes from 'prop-types';
-import { Box,  Divider, Drawer, Typography, useMediaQuery } from '@mui/material';
+import { Box, Divider, Drawer, Typography, useMediaQuery } from "@mui/material";
 
-import { ChartBar as ChartBarIcon } from '../icons/chart-bar';
-import { ShoppingBag as ShoppingBagIcon } from '../icons/shopping-bag';
-import { User as UserIcon } from '../icons/user';
-import { LogOut as LogOutIcon } from '../icons/log-out';
+import { ChartBar as ChartBarIcon } from "../../icons/chart-bar";
+import { ShoppingBag as ShoppingBagIcon } from "../../icons/shopping-bag";
+import { User as UserIcon } from "../../icons/user";
+import { LogOut as LogOutIcon } from "../../icons/log-out";
 
-import { NavItem } from './nav-item';
+import { NavItem } from "./nav-item";
 
 const Navitems = [
   {
-    href: '/',
-    icon: (<ChartBarIcon fontSize="small" />),
-    title: 'Dashboard'
+    href: "/",
+    icon: <ChartBarIcon fontSize="small" />,
+    title: "Dashboard",
   },
   // {
   //   href: '/productdata',
@@ -37,40 +39,45 @@ const items = [
 
 export const DashboardSidebar = (props) => {
   const { open, onClose } = props;
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'), {
+  const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"), {
     defaultMatches: true,
-    noSsr: false
+    noSsr: false,
   });
 
   const content = (
     <>
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%'
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
         }}
       >
         <div>
-          <Box sx={{ px: 2, py:3 }}>
+          <Box sx={{ px: 2, py: 3 }}>
             <Box
               sx={{
-                alignItems: 'center',
-                backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                cursor: 'pointer',
-                display: 'flex',
-                justifyContent: 'center',
+                alignItems: "center",
+                backgroundColor: "rgba(255, 255, 255, 0.04)",
+                cursor: "pointer",
+                display: "flex",
+                justifyContent: "center",
                 px: 3,
-                py: '0',
-                borderRadius: 1
+                py: "0",
+                borderRadius: 1,
               }}
             >
-              <div sx={{justifyContent: 'center'}}>
+              <div sx={{ justifyContent: "center" }}>
                 <Typography
                   color="inherit"
                   variant="h6"
-                  sx={{paddingTop:2,paddingLeft:2,paddingBottom:1,paddingRight:2,justifyContent: 'center',}}
-
+                  sx={{
+                    paddingTop: 2,
+                    paddingLeft: 2,
+                    paddingBottom: 1,
+                    paddingRight: 2,
+                    justifyContent: "center",
+                  }}
                 >
                   Mona Plastics
                 </Typography>
@@ -80,8 +87,8 @@ export const DashboardSidebar = (props) => {
         </div>
         <Divider
           sx={{
-            borderColor: '#2D3748',
-            my: 3
+            borderColor: "#2D3748",
+            my: 3,
           }}
         />
         <Box sx={{ flexGrow: 1 }}>
@@ -94,11 +101,11 @@ export const DashboardSidebar = (props) => {
             />
           ))}
         </Box>
-        <Divider sx={{ borderColor: '#2D3748' }} />
+        <Divider sx={{ borderColor: "#2D3748" }} />
         <Box
           sx={{
             px: 2,
-            py: 3
+            py: 3,
           }}
         >
           <Box sx={{ flexGrow: 1 }}>
@@ -111,7 +118,6 @@ export const DashboardSidebar = (props) => {
               />
             ))}
           </Box>
-        
         </Box>
       </Box>
     </>
@@ -124,10 +130,10 @@ export const DashboardSidebar = (props) => {
         open
         PaperProps={{
           sx: {
-            backgroundColor: 'neutral.900',
-            color: '#FFFFFF',
-            width: 280
-          }
+            backgroundColor: "neutral.900",
+            color: "#FFFFFF",
+            width: 280,
+          },
         }}
         variant="permanent"
       >
@@ -143,10 +149,10 @@ export const DashboardSidebar = (props) => {
       open={open}
       PaperProps={{
         sx: {
-          backgroundColor: 'neutral.900',
-          color: '#FFFFFF',
-          width: 280
-        }
+          backgroundColor: "neutral.900",
+          color: "#FFFFFF",
+          width: 280,
+        },
       }}
       sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
       variant="temporary"
