@@ -18,9 +18,9 @@ const socket = io(process.env.REACT_APP_SERVER_BASE_URL, {
 export default function Dashboard(props) {
   const [machineData, setMachineData] = useState([]);
 
-  useEffect(() => {
-    document.title = "Dashboard";
-  }, [props.title]);
+  // useEffect(() => {
+  //   document.title = "Dashboard";
+  // }, [props.title]);
 
   useEffect(() => {
     socket.on("connect_error", (err) => {
@@ -36,14 +36,17 @@ export default function Dashboard(props) {
   // i don't want these mesy structre
 
   return (
-    <DashboardLayout>
+    <DashboardLayout title={"hi"} machineData={machineData}>
       <Routes>
         <Route
           exact
           path="/"
           element={<MachinePage machineData={machineData} />}
         />
-        <Route path="/machines/:ID" element={<MachineInfoPage />} />
+        <Route
+          path="/machines/:ID"
+          element={<MachineInfoPage machineData={machineData} />}
+        />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </DashboardLayout>
