@@ -111,5 +111,5 @@ app.use('/api/molds',moldRoute);
 
 // start the server and connect to the database in it
 server.listen(dotenv.config().parsed.SERVER_PORT, async () => {
-    console.log('Server started on port 3001');
+    console.log('Server started on port '+ dotenv.config().parsed.SERVER_PORT);
 });

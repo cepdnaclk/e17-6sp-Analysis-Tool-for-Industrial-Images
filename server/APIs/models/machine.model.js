@@ -40,7 +40,7 @@ Machine.create = async (newMachine) => {
 
 
 Machine.all = function(data,callback){
-    var sqlmachines = "SELECT * FROM machines;"
+    var sqlmachines = "SELECT * FROM machines LEFT JOIN molds ON machines.moldId = molds.moldID;"
     
     // check whether empID exists in the employees table
     const status = sql.query(sqlmachines,callback,function(err,result){
