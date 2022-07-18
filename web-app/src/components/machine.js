@@ -23,6 +23,7 @@ import PropTypes from "prop-types";
 export const Machine = (props) => {
   const {
     machineId,
+    moldId,
     monaNumber,
     status,
     moldShots,
@@ -181,6 +182,17 @@ export const Machine = (props) => {
                             <Box sx={{ marginLeft: 1 }}>Material</Box>
                           </TableCell>
                           <TableCell align="left">{material}</TableCell>
+                        </TableRow>
+
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell component="th" scope="row">
+                            <Box sx={{ marginLeft: 1 }}>Mold ID</Box>
+                          </TableCell>
+                          <TableCell align="left">{moldId}</TableCell>
                         </TableRow>
                         {/* <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } ,}}>
                           <TableCell component="th" scope="row">

@@ -29,7 +29,7 @@ export default function Dashboard(props) {
 
     socket.on("machines", (data) => {
       data[0].status = "Online";
-      // console.log();
+      console.log(data);
       setMachineData(data);
     });
   });

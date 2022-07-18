@@ -56,7 +56,8 @@ export const MachinePage = ({ machineData }) => {
                   >
                     <Machine
                       machineId={machine.machineID}
-                      monaNumber={machine.moldID}
+                      monaNumber={machine.monaNumber}
+                      moldId={machine.moldID}
                       status={machine.status}
                       moldShots={machine.moldShots}
                       failedShots={machine.failedShots}
