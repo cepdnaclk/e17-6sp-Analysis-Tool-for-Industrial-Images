@@ -190,7 +190,7 @@ export const Machine = (props) => {
                           }}
                         >
                           <TableCell component="th" scope="row">
-                            <Box sx={{ marginLeft: 1 }}>Mona ID</Box>
+                            <Box sx={{ marginLeft: 1 }}>Mold ID</Box>
                           </TableCell>
                           <TableCell align="left">{moldId}</TableCell>
                         </TableRow>
