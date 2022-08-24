@@ -53,6 +53,7 @@ export const MachinePage = ({ machineData }) => {
                   <Link
                     to={{ pathname: `machines/:${machine.machineID}` }}
                     state={{ ...machine }}
+                    style={{ textDecoration: "none" }}
                   >
                     <Machine
                       machineId={machine.machineID}

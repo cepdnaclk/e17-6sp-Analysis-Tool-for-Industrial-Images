@@ -7,6 +7,7 @@ import {
   Card,
   CardContent,
   Grid,
+  Chip,
   Table,
   TableRow,
   TableCell,
@@ -15,12 +16,14 @@ import {
   TableContainer,
   Paper,
   TableHead,
+  BadgeMark,
 } from "@mui/material";
 import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
-
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 export const Machine = (props) => {
+  const [error, setError] = useState(false);
   const {
     machineId,
     moldId,
@@ -37,213 +40,151 @@ export const Machine = (props) => {
     moldMaker,
     ...others
   } = props;
+
+  if (status != "online") {
+    setError(true);
+  } else {
+    setError(false);
+  }
   return (
-    <Badge
-      badgeContent={status}
-      color={status === "Online" ? "secondary" : "error"}
+    <Card
+      variant="outlined"
+      sx={{
+        margin: 0,
+        padding: 0,
+        borderWidth: 3,
+        maxWidth: 260,
+        backgroundColor: "red",
+      }}
+      {...others}
     >
-      <Card
-        variant="outlined"
-        sx={{ borderWidth: 3, maxWidth: 260, margin: 0, padding: 0 }}
-        {...others}
-      >
-        <CardContent
-          alignItems="center"
-          justifyContent="center"
-          sx={{ margin: 0, padding: 2 }}
-        >
+      <CardContent alignItems="center" justifyContent="center">
+        <Grid>
+          {/* machine id header*/}
           <Grid
-            container
-            alignItems="center"
-            justifyContent="left"
-            sx={{ maxWidth: 260 }}
+            item
+            xs={12}
+            spacing={4}
+            alignItems="space-between"
+            justifyContent={"center"}
           >
-            {/* machine id */}
-            <Grid item position="relative">
-              <Grid
-                container
-                alignItems="center"
-                justifyContent={"space-around"}
-              >
-                <Grid item margin={2}>
-                  <Avatar
-                    sx={{
-                      backgroundColor: "success.main",
-                      height: 56,
-                      width: 56,
-                    }}
-                  >
-                    <PrecisionManufacturingIcon />
-                  </Avatar>
-                </Grid>
-                <Grid item>
-                  <Typography
-                    color="textSecondary"
-                    gutterBottom
-                    variant="overline"
-                  >
-                    Machine {machineId}
-                  </Typography>
-                </Grid>
+            <Grid
+              container
+              alignItems="center"
+              justifyContent={"space-around"}
+              sx={{ backgroundColor: "primary" }}
+            >
+              <Grid item margin={2}>
+                <Avatar
+                  sx={{
+                    height: 56,
+                    width: 56,
+                    backgroundColor: "success.main",
+                  }}
+                >
+                  <PrecisionManufacturingIcon />
+                </Avatar>
               </Grid>
-            </Grid>
-
-            {/* mona number */}
-            <Grid item sx={{ margin: 0, paddingBottom: 2 }}>
-              <Typography color="textPrimary" variant="h6">
-                Mona Number {monaNumber}
-              </Typography>
-            </Grid>
-            {/* statics table */}
-            <Grid item>
-              <Grid container>
-                <Grid item>
-                  {/* statistics */}
-                  <TableContainer component={Paper}>
-                    <Table
-                      sx={{ minWidth: 100 }}
-                      size="small"
-                      aria-label="a dense table"
-                    >
-                      <TableBody>
-                        <TableHead>
-                          <TableRow
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell component="th" scope="row">
-                              Molds
-                            </TableCell>
-                          </TableRow>
-                        </TableHead>
-                        <TableRow
-                          sx={{
-                            "&:last-child td, &:last-child th": { border: 1 },
-                          }}
-                        >
-                          <TableCell component="th" scope="row">
-                            <Box sx={{ marginLeft: 1 }}>Mold Shots</Box>
-                          </TableCell>
-                          <TableCell align="left">{moldShots}</TableCell>
-                        </TableRow>
-                        <TableRow
-                          sx={{
-                            "&:last-child td, &:last-child th": { border: 0 },
-                          }}
-                        >
-                          <TableCell component="th" scope="row">
-                            <Box sx={{ marginLeft: 1, color: "red" }}>
-                              Failed Shots
-                            </Box>
-                          </TableCell>
-                          <TableCell align="left" sx={{ color: "red" }}>
-                            {failedShots}
-                          </TableCell>
-                        </TableRow>
-                        <TableHead>
-                          <TableRow
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell component="th" scope="row">
-                              Production
-                            </TableCell>
-                          </TableRow>
-                        </TableHead>
-
-                        <TableRow
-                          sx={{
-                            "&:last-child td, &:last-child th": { border: 0 },
-                          }}
-                        >
-                          <TableCell component="th" scope="row">
-                            <Box sx={{ marginLeft: 1 }}>Hourly Rate</Box>
-                          </TableCell>
-                          <TableCell align="left">{prodRate}</TableCell>
-                        </TableRow>
-                        <TableRow
-                          sx={{
-                            "&:last-child td, &:last-child th": { border: 0 },
-                          }}
-                        >
-                          <TableCell component="th" scope="row">
-                            <Box sx={{ marginLeft: 1 }}>Mold Maker</Box>
-                          </TableCell>
-                          <TableCell align="left">{moldMaker}</TableCell>
-                        </TableRow>
-                        <TableRow
-                          sx={{
-                            "&:last-child td, &:last-child th": { border: 0 },
-                          }}
-                        >
-                          <TableCell component="th" scope="row">
-                            <Box sx={{ marginLeft: 1 }}>Material</Box>
-                          </TableCell>
-                          <TableCell align="left">{material}</TableCell>
-                        </TableRow>
-
-                        <TableRow
-                          sx={{
-                            "&:last-child td, &:last-child th": { border: 0 },
-                          }}
-                        >
-                          <TableCell component="th" scope="row">
-                            <Box sx={{ marginLeft: 1 }}>Mold ID</Box>
-                          </TableCell>
-                          <TableCell align="left">{moldId}</TableCell>
-                        </TableRow>
-                        {/* <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } ,}}>
-                          <TableCell component="th" scope="row">
-                          <Box sx={{ marginLeft: 1 }}> 
-                              Start Date
-                          </Box>
-                      </TableCell>
-                      <TableCell align="left">
-                      {prod_startDate} 
-                      </TableCell>
-                    </TableRow>
-                    <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                      <TableCell component="th" scope="row">
-                          <Box sx={{ marginLeft: 1 }}> 
-                              Start Time
-                          </Box>
-                      </TableCell>
-                      <TableCell align="left">
-                      {prod_startTime} 
-                      </TableCell>
-                    </TableRow>
-                    <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                      <TableCell component="th" scope="row">
-                          <Box sx={{ marginLeft: 1 }}> 
-                            End Date 
-                          </Box>
-                      </TableCell>
-                          <TableCell align="left"> 
-                              {prod_endDate}
-                      </TableCell>
-                    </TableRow> */}
-                        {/* <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                          <TableCell component="th" scope="row">
-                          <Box sx={{ marginLeft: 1 }}>
-                              End Time
-                          </Box>
-                      </TableCell>
-                      <TableCell align="left">
-                      {prod_endTime} 
-                      </TableCell>
-                      </TableRow> */}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                </Grid>
+              <Grid item>
+                <Typography
+                  color="textSecondary"
+                  gutterBottom
+                  variant="overline"
+                >
+                  Machine {machineId}
+                </Typography>
+                <Typography color="textPrimary" variant="h6">
+                  {monaNumber}
+                </Typography>
+                <Typography
+                  variant="h6"
+                  component="div"
+                  textAlign="left"
+                  color="black"
+                >
+                  {moldId}
+                </Typography>
               </Grid>
             </Grid>
           </Grid>
-        </CardContent>
-      </Card>
-    </Badge>
+          {/* mold deltails */}
+          <Grid item textAlign="center" xs={12} padding={1}>
+            <Grid
+              container
+              alignItems="center"
+              justifyContent={"end"}
+              spacing={2}
+            >
+              <Grid item>
+                <Typography
+                  variant="h6"
+                  component="div"
+                  textAlign="left"
+                  color="black"
+                >
+                  <Chip label={material} color="info" />
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography
+                  variant="h6"
+                  component="div"
+                  textAlign="left"
+                  color="black"
+                >
+                  <Chip label={moldMaker} color="primary" />
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          {/* statistics */}
+          <Grid item xs={12}>
+            <Grid
+              container
+              direction="row"
+              justifyContent={"space-between"}
+              alignItems="center"
+            >
+              <Grid
+                item
+                xs={6}
+                padding={1}
+                justifyContent="center"
+                alignItems="center"
+                sx={{ backgroundColor: "success.main" }}
+              >
+                <Typography
+                  variant="h6"
+                  component="div"
+                  textAlign="center"
+                  color="white"
+                >
+                  {moldShots}
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                xs={6}
+                padding={1}
+                justifyContent="center"
+                alignItems="center"
+                sx={{ backgroundColor: "error.main" }}
+              >
+                <Typography
+                  variant="h6"
+                  component="div"
+                  textAlign="center"
+                  color="white"
+                >
+                  {failedShots}
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
   );
 };
 
